@@ -1,0 +1,275 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AlgoLingo | Return Values Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#bdf4ff",
+                    "on-tertiary-container": "#202942",
+                    "surface-container-low": "#0d1c2d",
+                    "on-surface-variant": "#c7c4d8",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#273647",
+                    "on-error": "#690005",
+                    "on-surface": "#d4e4fa",
+                    "surface-tint": "#c4c0ff",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#8790ae",
+                    "on-secondary": "#00363d",
+                    "secondary-fixed-dim": "#00daf3",
+                    "outline": "#918fa1",
+                    "surface-container-highest": "#273647",
+                    "surface-container": "#122131",
+                    "tertiary-fixed": "#dae1ff",
+                    "tertiary-fixed-dim": "#bdc6e5",
+                    "tertiary": "#bdc6e5",
+                    "on-primary": "#2000a4",
+                    "on-primary-fixed": "#100069",
+                    "inverse-surface": "#d4e4fa",
+                    "primary-fixed": "#e3dfff",
+                    "primary-container": "#8781ff",
+                    "on-tertiary-fixed-variant": "#3d4660",
+                    "surface": "#051424",
+                    "surface-container-high": "#1c2b3c",
+                    "secondary-container": "#00e3fd",
+                    "primary-fixed-dim": "#c4c0ff",
+                    "on-tertiary": "#273049",
+                    "primary": "#c4c0ff",
+                    "surface-bright": "#2c3a4c",
+                    "surface-dim": "#051424",
+                    "outline-variant": "#464555",
+                    "on-secondary-container": "#00616d",
+                    "on-primary-fixed-variant": "#3622ca",
+                    "background": "#051424",
+                    "secondary-fixed": "#9cf0ff",
+                    "on-tertiary-fixed": "#121b33",
+                    "on-background": "#d4e4fa",
+                    "on-secondary-fixed-variant": "#004f58",
+                    "on-secondary-fixed": "#001f24",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#010f1f",
+                    "inverse-on-surface": "#233143",
+                    "inverse-primary": "#4f44e2",
+                    "on-primary-container": "#1b0091"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["JetBrains Mono"],
+                    "code-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(18, 33, 49, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 25px rgba(196, 192, 255, 0.15);
+            border-color: rgba(196, 192, 255, 0.3);
+        }
+
+        .code-block {
+            background-color: #010f1f;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, rgba(196, 192, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(189, 244, 255, 0.03) 0%, transparent 40%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<div class="cosmic-bg" style="background-position: 6.4375px 17.8523px;"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_30px_rgba(196,192,255,0.15)] h-20 px-margin-desktop flex justify-between items-center">
+<div class="flex items-center gap-12">
+<div class="font-display-lg text-display-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">🚀 AlgoLingo</div>
+<!-- Breadcrumbs -->
+<div class="hidden md:flex items-center gap-3 text-on-surface-variant font-label-caps text-label-caps tracking-widest">
+<span class="hover:text-primary transition-colors cursor-pointer">PYTHON NEBULA</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="hover:text-primary transition-colors cursor-pointer">FUNCTION ORBIT</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-secondary">RETURN VALUES</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] hover:text-on-surface cursor-pointer">settings</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-primary/30 p-0.5 overflow-hidden ring-4 ring-primary/5">
+<img alt="Explorer Avatar" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW2NwkVXpEvpj9nwfcnE9D_0_HDlJjJHmuUZu3tAn9hu9FRbavAUV6sC3iEWJuUp-sLMp4WG195kNRT5dHEPnwJlY_lVfu-8b9Nf0ASD3mrk0G4wowhbm0om1TxIrhFl5ht4Ig4CkYDLk2-rmWTTgk3eb6BbexQo5Z9Wi4WKzZ4c-U8MoBn7HFXEj1oKjCqPwBcu0wqHLyHWupxNQmRxJn2cYcvu3lJUJxScDMOsf7VaCUkPY14GJeg_Sn9pm0UpP5DAnaKASYhcML">
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-40 px-margin-mobile md:px-0">
+<div class="max-w-[800px] mx-auto">
+<!-- Lesson Header -->
+<header class="mb-12">
+<div class="flex gap-3 mb-6">
+<span class="px-3 py-1 rounded-full bg-primary/15 text-primary font-label-caps text-[10px] border border-primary/20">8 MIN READ</span>
+<span class="px-3 py-1 rounded-full bg-secondary/15 text-secondary font-label-caps text-[10px] border border-secondary/20">50 XP</span>
+<span class="px-3 py-1 rounded-full bg-on-tertiary-fixed-variant/40 text-on-surface-variant font-label-caps text-[10px] border border-white/5">BEGINNER</span>
+</div>
+<h1 class="font-display-lg text-[40px] md:text-display-lg leading-tight mb-4 text-on-surface">Return Values</h1>
+<p class="font-body-md text-on-surface-variant text-lg leading-relaxed max-w-[640px]">
+                    In the logic of the Python Nebula, functions are more than just scripts—they are data processors. Learn how to harvest the results of your functions and send them back to your primary mission control.
+                </p>
+</header>
+<!-- Discovery Content -->
+<section class="space-y-8">
+<div class="prose prose-invert max-w-none">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">The Payload Concept</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6">
+                        Think of a function as a remote drone sent into an asteroid belt. You give it parameters (instructions), it performs a task, and then it must return with a payload. Without a <code class="bg-surface-container text-secondary px-1.5 py-0.5 rounded font-code-sm">return</code> statement, your drone completes the job but leaves the resources behind in deep space.
+                    </p>
+<!-- Premium Code Block -->
+<div class="code-block rounded-xl overflow-hidden mb-8 border border-white/5">
+<div class="flex items-center justify-between px-4 py-2 bg-surface-container-high/50 border-b border-white/5">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">PAYLOAD_PROCESSOR.PY</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/40"></div>
+</div>
+</div>
+<div class="p-6 font-code-sm text-code-sm leading-relaxed">
+<pre class="text-on-surface"><span class="text-primary">def</span> <span class="text-secondary">add</span>(a, b):<br>    <span class="text-primary">return</span> a + b<br><br><span class="text-on-surface-variant"># Harvesting the payload</span><br>result = <span class="text-secondary">add</span>(<span class="text-primary-fixed-dim">5</span>, <span class="text-primary-fixed-dim">3</span>)<br><span class="text-secondary">print</span>(result) <span class="text-on-surface-variant"># Output: 8</span></pre>
+</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Why Return Matters</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6">
+                        Returning values allows you to chain logic together. The output of one function becomes the input for the next, creating a seamless stream of interstellar data processing.
+                    </p>
+<!-- Tip Card -->
+<div class="glass-panel rounded-xl p-6 mb-8 border-l-4 border-l-secondary relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[120px] text-secondary">lightbulb</span>
+</div>
+<div class="flex gap-4 items-start relative z-10">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">lightbulb</span>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-secondary mb-1">PRO-TIP: REUSABILITY</h4>
+<p class="font-body-md text-on-surface text-sm">Return values make functions reusable. Instead of just printing a result, returning it allows other parts of your code to use that data for further calculations.</p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        In the next phase of your orbit, we will explore how functions can return multiple values simultaneously using tuples, allowing for complex data structures to be transmitted across your codebase.
+                    </p>
+</div>
+</section>
+<!-- Bottom Navigation Section -->
+<div class="mt-20 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex gap-12">
+<a class="group flex flex-col items-start gap-1" href="#">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-widest group-hover:text-on-surface transition-colors">PREVIOUS DISCOVERY</span>
+<div class="flex items-center gap-2 text-on-surface group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span class="font-medium">Defining Functions</span>
+</div>
+</a>
+<a class="group flex flex-col items-end gap-1 text-right" href="#">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-widest group-hover:text-on-surface transition-colors">NEXT DISCOVERY</span>
+<div class="flex items-center gap-2 text-on-surface group-hover:text-secondary transition-colors">
+<span class="font-medium">Scope &amp; Global Variables</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</div>
+</a>
+</div>
+<button class="px-8 py-4 bg-gradient-to-r from-primary to-primary-container rounded-xl text-on-primary font-bold tracking-tight hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(196,192,255,0.3)] flex items-center gap-3">
+                    MARK COMPLETE
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+</div>
+</main>
+<!-- FAB: Ask NOVA -->
+<button class="fixed bottom-8 right-8 flex items-center gap-3 bg-surface-container-high/80 backdrop-blur-xl border border-primary/20 pl-4 pr-6 py-3 rounded-full hover:glow-primary hover:border-primary/50 transition-all duration-300 group shadow-2xl">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-on-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider">ASK NOVA</span>
+<!-- Subtle HUD ring decoration -->
+<div class="absolute inset-0 rounded-full border border-white/5 scale-110 group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+</button>
+<!-- Background Decoration Shaders (Simulated with Blur) -->
+<div class="fixed top-1/4 -left-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-1/4 -right-20 w-96 h-96 bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<script>
+        // Micro-interaction for code copy or hover
+        document.querySelector('.code-block').addEventListener('mouseenter', () => {
+            console.log('Hovering system core...');
+        });
+
+        // Simple parallax for background glow
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelector('.cosmic-bg').style.backgroundPosition = `${x * 20}px ${y * 20}px`;
+        });
+    </script>
+
+
+</body></html>

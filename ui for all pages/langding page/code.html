@@ -1,0 +1,829 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AlgoLingo | Master Programming Through Space Exploration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed": "#9cf0ff",
+                "surface-container-high": "#1c2b3c",
+                "primary-container": "#8781ff",
+                "secondary-fixed-dim": "#00daf3",
+                "surface": "#051424",
+                "surface-container-highest": "#273647",
+                "on-background": "#d4e4fa",
+                "on-secondary-fixed-variant": "#004f58",
+                "on-surface-variant": "#c7c4d8",
+                "on-tertiary-container": "#202942",
+                "on-tertiary": "#273049",
+                "surface-variant": "#273647",
+                "surface-container-lowest": "#010f1f",
+                "on-primary-container": "#1b0091",
+                "on-secondary-fixed": "#001f24",
+                "on-tertiary-fixed-variant": "#3d4660",
+                "primary-fixed-dim": "#c4c0ff",
+                "surface-bright": "#2c3a4c",
+                "tertiary-fixed": "#dae1ff",
+                "on-primary-fixed-variant": "#3622ca",
+                "surface-container-low": "#0d1c2d",
+                "surface-tint": "#c4c0ff",
+                "tertiary-container": "#8790ae",
+                "outline-variant": "#464555",
+                "outline": "#918fa1",
+                "on-tertiary-fixed": "#121b33",
+                "inverse-primary": "#4f44e2",
+                "tertiary-fixed-dim": "#bdc6e5",
+                "inverse-surface": "#d4e4fa",
+                "error": "#ffb4ab",
+                "on-surface": "#d4e4fa",
+                "tertiary": "#bdc6e5",
+                "secondary-container": "#00e3fd",
+                "surface-container": "#122131",
+                "surface-dim": "#051424",
+                "primary": "#c4c0ff",
+                "on-secondary-container": "#00616d",
+                "on-primary-fixed": "#100069",
+                "on-error-container": "#ffdad6",
+                "on-primary": "#2000a4",
+                "primary-fixed": "#e3dfff",
+                "on-secondary": "#00363d",
+                "secondary": "#bdf4ff",
+                "background": "#051424",
+                "error-container": "#93000a",
+                "on-error": "#690005",
+                "inverse-on-surface": "#233143"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "16px",
+                "container-max": "1440px",
+                "gutter": "24px",
+                "unit": "4px",
+                "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                "headline-lg": ["Space Grotesk"],
+                "body-md": ["Inter"],
+                "label-caps": ["JetBrains Mono"],
+                "display-lg": ["Space Grotesk"],
+                "code-sm": ["JetBrains Mono"],
+                "headline-lg-mobile": ["Space Grotesk"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            },
+            "animation": {
+                "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+                "pulse-glow": "pulseGlow 3s infinite ease-in-out",
+            },
+            "keyframes": {
+                "fadeInUp": {
+                    "0%": { opacity: "0", transform: "translateY(20px)" },
+                    "100%": { opacity: "1", transform: "translateY(0)" }
+                },
+                "pulseGlow": {
+                    "0%, 100%": { filter: "drop-shadow(0 0 5px rgba(196,192,255,0.3))" },
+                    "50%": { filter: "drop-shadow(0 0 20px rgba(196,192,255,0.6))" }
+                }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #060816;
+            color: #d4e4fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(18, 27, 51, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        .primary-glow:hover {
+            box-shadow: 0 0 20px rgba(196, 192, 255, 0.4);
+        }
+        .secondary-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 218, 243, 0.4);
+        }
+        .hud-bar-fill {
+            background: linear-gradient(90deg, #00daf3, #c4c0ff);
+            position: relative;
+        }
+        .hud-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: white;
+            box-shadow: 0 0 10px #fff;
+        }
+        .animate-delay-100 { animation-delay: 100ms; }
+        .animate-delay-200 { animation-delay: 200ms; }
+        .animate-delay-300 { animation-delay: 300ms; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Global Background Shader -->
+<!-- STITCH_SHADER_START:ANIMATION_2 class="fixed inset-0 w-full h-full -z-10 pointer-events-none opacity-40" -->
+<div class="fixed inset-0 w-full h-full -z-10 pointer-events-none opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+float noise(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = uv * 2.0 - 1.0;
+    p.x *= u_resolution.x / u_resolution.y;
+    
+    // Background deep space
+    vec3 color = vec3(0.023, 0.031, 0.086); // #060816 approximation
+    
+    // Star layers
+    for(float i=1.0; i<4.0; i++) {
+        vec2 starPos = uv * (10.0 * i);
+        float n = noise(floor(starPos));
+        if(n > 0.98) {
+            float blink = sin(u_time * 2.0 + n * 10.0) * 0.5 + 0.5;
+            color += vec3(0.8, 0.9, 1.0) * blink * pow(fract(starPos.x) * fract(starPos.y), 10.0) * i;
+        }
+    }
+    
+    // Subtle nebula glow
+    float nebula = sin(uv.x * 2.0 + u_time * 0.1) * cos(uv.y * 2.0 - u_time * 0.15);
+    color += vec3(0.42, 0.39, 1.0) * nebula * 0.05; // Primary Accent glow
+    color += vec3(0.0, 0.9, 1.0) * (1.0 - length(p - vec2(0.8, 0.8))) * 0.05; // Secondary Accent glow top right
+    
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_2 -->
+<!-- Section 1: TopNavBar -->
+<nav class="fixed top-0 w-full h-[80px] z-[100] bg-surface-container/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(196,192,255,0.15)] flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto left-0 right-0">
+<div class="flex items-center gap-3 group cursor-pointer">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AlgoLingo</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-secondary border-b-2 border-secondary pb-1" href="#">Missions</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Academy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Ranking</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Systems</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface hover:bg-white/5 transition-all font-label-caps text-label-caps">Log In</button>
+<button class="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary-fixed-dim text-on-primary-container font-label-caps text-label-caps font-bold primary-glow transition-all active:scale-95">Launch Terminal</button>
+</div>
+</nav>
+<main class="relative z-10 pt-[80px]">
+<!-- Section 2: Hero -->
+<section class="min-h-[calc(100vh-80px)] flex flex-col md:flex-row items-center px-margin-desktop py-12 gap-12 max-w-container-max mx-auto overflow-hidden">
+<div class="flex-1 space-y-8 animate-fade-in-up">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm">stars</span>
+<span class="text-primary font-label-caps text-[10px] uppercase tracking-widest">Gamified Programming Learning Platform</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-[72px] leading-tight font-bold bg-gradient-to-br from-white via-primary to-secondary bg-clip-text text-transparent">
+                    Master Programming Through Space Exploration
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                    Embark on an interstellar journey across programming languages. Navigate through Python Nebulas, solve Java Anomalies, and harness the raw power of C++ in an immersive HUD-driven workspace.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-10 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary-fixed-dim text-on-primary-container font-bold text-headline-lg-mobile primary-glow transition-all hover:scale-105 active:scale-95">
+                        Start Journey
+                    </button>
+<button class="px-10 py-4 rounded-xl border-2 border-primary/40 hover:border-primary text-primary font-bold text-headline-lg-mobile glass-panel transition-all">
+                        Explore Galaxies
+                    </button>
+</div>
+<div class="flex gap-6 pt-8 opacity-60">
+<span class="font-code-sm text-code-sm"># Python</span>
+<span class="font-code-sm text-code-sm"># Java</span>
+<span class="font-code-sm text-code-sm"># C++</span>
+<span class="font-code-sm text-code-sm"># Rust</span>
+</div>
+</div>
+<div class="flex-1 w-full h-[600px] relative animate-fade-in-up animate-delay-200">
+<!-- STITCH_THREEJS_START:ANIMATION_3 class="w-full h-full scale-125 md:scale-110 drop-shadow-[0_0_50px_rgba(196,192,255,0.2)]" -->
+<div class="w-full h-full scale-125 md:scale-110 drop-shadow-[0_0_50px_rgba(196,192,255,0.2)]" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_3" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_3');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0x6C63FF, 2);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Galaxy/Central Hub
+const galaxyGeometry = new THREE.SphereGeometry(1, 32, 32);
+const galaxyMaterial = new THREE.MeshPhongMaterial({ 
+    color: 0x6C63FF, 
+    emissive: 0x6C63FF, 
+    emissiveIntensity: 0.5,
+    transparent: true,
+    opacity: 0.8
+});
+const galaxy = new THREE.Mesh(galaxyGeometry, galaxyMaterial);
+scene.add(galaxy);
+
+// Planets (Python, Java, C, C++)
+const planetData = [
+    { name: 'Python', color: 0x22C55E, dist: 3, speed: 0.005, size: 0.4 },
+    { name: 'Java', color: 0xF59E0B, dist: 4.5, speed: 0.003, size: 0.5 },
+    { name: 'C', color: 0x94A3B8, dist: 6, speed: 0.002, size: 0.35 },
+    { name: 'C++', color: 0x00E5FF, dist: 7.5, speed: 0.0015, size: 0.45 }
+];
+
+const planets = [];
+planetData.forEach(data => {
+    const group = new THREE.Group();
+    
+    // Orbit line
+    const orbitGeom = new THREE.RingGeometry(data.dist - 0.02, data.dist + 0.02, 64);
+    const orbitMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1, side: THREE.DoubleSide });
+    const orbit = new THREE.Mesh(orbitGeom, orbitMat);
+    orbit.rotation.x = Math.PI / 2;
+    scene.add(orbit);
+
+    // Planet
+    const geom = new THREE.SphereGeometry(data.size, 32, 32);
+    const mat = new THREE.MeshPhongMaterial({ color: data.color, shininess: 100 });
+    const mesh = new THREE.Mesh(geom, mat);
+    mesh.position.x = data.dist;
+    group.add(mesh);
+    
+    scene.add(group);
+    planets.push({ group, speed: data.speed });
+});
+
+camera.position.z = 12;
+camera.position.y = 5;
+camera.lookAt(0, 0, 0);
+
+function animate() {
+    requestAnimationFrame(animate);
+    galaxy.rotation.y += 0.01;
+    planets.forEach(p => {
+        p.group.rotation.y += p.speed;
+    });
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_3 -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none"></div>
+</div>
+</section>
+<!-- Section 3: How it Works -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto relative">
+<div class="text-center space-y-4 mb-20">
+<h2 class="font-display-lg text-headline-lg font-bold">Your Learning Journey</h2>
+<div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+</div>
+<div class="relative grid grid-cols-1 md:grid-cols-5 gap-6">
+<!-- Glowing Connector Line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 -z-10"></div>
+<!-- Steps -->
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">rocket</span>
+</div>
+<span class="font-label-caps text-primary text-[10px] tracking-widest uppercase">Step 01</span>
+<h3 class="font-headline-lg text-xl font-bold">Choose Galaxy</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Select your target programming language and launch mission.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 group animate-delay-100">
+<div class="w-16 h-16 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl">public</span>
+</div>
+<span class="font-label-caps text-secondary text-[10px] tracking-widest uppercase">Step 02</span>
+<h3 class="font-headline-lg text-xl font-bold">Explore Planet</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Dive into syntax continents and logical biomes.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 group animate-delay-200">
+<div class="w-16 h-16 rounded-full bg-tertiary/20 border border-tertiary/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl">search</span>
+</div>
+<span class="font-label-caps text-tertiary text-[10px] tracking-widest uppercase">Step 03</span>
+<h3 class="font-headline-lg text-xl font-bold">Complete Discoveries</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Extract core concepts through interactive visual lessons.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 group animate-delay-300">
+<div class="w-16 h-16 rounded-full bg-error/20 border border-error/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-error text-3xl">warning</span>
+</div>
+<span class="font-label-caps text-error text-[10px] tracking-widest uppercase">Step 04</span>
+<h3 class="font-headline-lg text-xl font-bold">Solve Anomalies</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Debug complex code systems in the Aether Editor.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 group">
+<div class="w-16 h-16 rounded-full bg-primary-fixed/20 border border-primary-fixed/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-fixed text-3xl">emoji_events</span>
+</div>
+<span class="font-label-caps text-primary-fixed text-[10px] tracking-widest uppercase">Step 05</span>
+<h3 class="font-headline-lg text-xl font-bold">Earn Rewards</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Gain Knowledge Energy and upgrade your ship rank.</p>
+</div>
+</div>
+</section>
+<!-- Section 4: Galaxies Showcase -->
+<section class="py-24 bg-surface-container-low/50">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-16">
+<h2 class="font-display-lg text-headline-lg font-bold">Choose Your Galaxy</h2>
+<p class="font-body-md text-on-surface-variant mt-2">Each galaxy offers a unique architecture and challenges.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Galaxy Python -->
+<div class="glass-panel overflow-hidden rounded-3xl group relative h-[500px]">
+<div class="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A mesmerizing deep space view of a blue and yellow nebula, swirling with cosmic dust and distant stars, representing a vibrant digital programming galaxy. The lighting is cinematic, highlighting intricate textures of the nebula against a pitch-black void. The overall aesthetic is high-fidelity sci-fi, evoking a sense of discovery and technical mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9o889vaOJC11CNIAwC0sGLVs3ArqzIzIwhoUO2eYkL80WqsmaDMufisA6_6kTnRxo02ypDYHaAVuPr_kyhYKN_PHXjCZhVvdC_rH9OfXecHjy7KXeIc4CNBKo8AeyGHBWyL54r80H0BuRb9vHtgKbA0qSbd_RIflCepWlBbOClv3fCVFFBGV9fZBeJV5pFXY36WfaxxKeSLqiOll-bpIvfp2fGQOATGRqfpBCNWruaqOPNryUhyXDLZFsJ8mYRa8VFzPk1bN5RzX8">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full space-y-4">
+<h3 class="font-headline-lg text-2xl font-bold text-white">Python Nebula</h3>
+<p class="font-body-md text-sm text-on-surface-variant">The easiest path for new navigators. Clean, readable, and powerful.</p>
+<button class="w-full py-3 rounded-xl bg-blue-500/20 hover:bg-blue-500 border border-blue-500/40 text-blue-100 font-bold transition-all">Enter Galaxy</button>
+</div>
+</div>
+<!-- Galaxy Java -->
+<div class="glass-panel overflow-hidden rounded-3xl group relative h-[500px]">
+<div class="absolute inset-0 bg-gradient-to-b from-orange-500/20 to-transparent"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A futuristic orange-tinted solar system with multiple planets and structured orbital rings, symbolizing the robust architecture of the Java programming language. Intense sunlight flare from a central star creates sharp highlights and long shadows across industrial-looking space stations. The style is detailed corporate modernism blended with space opera vibes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8YxpuE7w4PkXPBNblPSnTubURTFHF7HhyX2VvDiGIGnOhRJ8kl0QTv63ClQ7o-IamrNUCInJ6q00nMOlK4ynv9segH5LpoFzrMWDy0QT-aHtS3bFfE8B6qf4HpP04NnJynAKOtxBr3vVmNLMCMui5wCcY7RAHykZ8RgzoQtXhN8hCzSzSh60GEfUoDLPBvyhHKXveX54eYRLxw3vBRiwv1e1aojkABebCr8vCSI9K7WDovOlkAyhD7TFrzNj3SZF4bPW1Sqbm8FYj">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full space-y-4">
+<h3 class="font-headline-lg text-2xl font-bold text-white">Java Sector</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Highly structured systems for large-scale interstellar fleets.</p>
+<button class="w-full py-3 rounded-xl bg-orange-500/20 hover:bg-orange-500 border border-orange-500/40 text-orange-100 font-bold transition-all">Enter Galaxy</button>
+</div>
+</div>
+<!-- Galaxy C -->
+<div class="glass-panel overflow-hidden rounded-3xl group relative h-[500px]">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cold, dark celestial field filled with crystalline asteroid belts and sharp-edged gas clouds in shades of purple and teal, representing the low-level precision of the C programming language. Minimalist lighting emphasizes the geometric purity of the stellar landscape. The mood is authoritative and challenging, perfect for elite coders." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuH6mQZO0zLZwrdNdWe6bhV4-GgBg7WtMlzgOOd1m2HcYfWXJ7cZL_-zdj1n_D0swIAt3CWcMLNy6w56rgGUOrc1ZQGi1Y4cOnk1ickmLggDrOlgYZnnlvzamyLJTD5akYIeFbwVDE5xOvuu8Sp5doyvfzz6BuWxmuPkY0woBqA-Tvzb3_bLJ6UFoeDxu5tEJzbmh406gaJQeqywTH4pLCrCCzNxDd-qcpb4fmoxxVqi8XDIjoKo4XU-Z3kF3wnYqXGlFW3ljTq-Sk">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full space-y-4">
+<h3 class="font-headline-lg text-2xl font-bold text-white">Core C Void</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Master the raw foundations of space engineering and memory.</p>
+<button class="w-full py-3 rounded-xl bg-primary/20 hover:bg-primary border border-primary/40 text-primary-fixed font-bold transition-all">Enter Galaxy</button>
+</div>
+</div>
+<!-- Galaxy C++ -->
+<div class="glass-panel overflow-hidden rounded-3xl group relative h-[500px]">
+<div class="absolute inset-0 bg-gradient-to-b from-secondary-fixed-dim/20 to-transparent"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A vast, high-tech dyson sphere structure surrounding a pulsing cyan star, showcasing the immense power and complexity of the C++ programming language. The surface of the sphere is covered in intricate glowing circuits and mechanical arrays. The visual style is crisp, with high contrast between neon cyan energy and dark metallic surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZD4woGvbOvW2xOqveRZgNrZiosupu5a0CLeZV_we-a49jmma3ImnvMl2cPjKQSm-odcHK3lWJzrfL9Js21YaqP1OfKK1GikNUfxcnbWEPOMQ5vICbaDCtOHiyg0wWV-aQbDzvu5-F9PNlHqtDM78DwY0JUGlDprTU8npqKI42PPz8u669sCV_DthkxrZ8wg7ZMka3HSVlb2aMbDLv6gTL6T4f35Hqc3T-R6FyIWfxd3sSHEzhN2zH4sQ-7pvHPC-M7HXdZu6Jq4T-">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full space-y-4">
+<h3 class="font-headline-lg text-2xl font-bold text-white">System C++ Core</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Complex performance tuning for high-velocity spacecraft.</p>
+<button class="w-full py-3 rounded-xl bg-secondary-fixed-dim/20 hover:bg-secondary-fixed-dim border border-secondary-fixed-dim/40 text-on-secondary-fixed font-bold transition-all">Enter Galaxy</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Features Grid -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-panel p-10 rounded-[2rem] border-l-4 border-l-primary space-y-4">
+<span class="material-symbols-outlined text-primary text-4xl">radar</span>
+<h3 class="font-headline-lg text-2xl font-bold">Interactive Discoveries</h3>
+<p class="font-body-md text-on-surface-variant">Hands-on visual coding environments where code literally moves the stars.</p>
+</div>
+<div class="glass-panel p-10 rounded-[2rem] border-l-4 border-l-secondary space-y-4">
+<span class="material-symbols-outlined text-secondary text-4xl">crisis_alert</span>
+<h3 class="font-headline-lg text-2xl font-bold">Practice Anomalies</h3>
+<p class="font-body-md text-on-surface-variant">Real-world debugging scenarios presented as system malfunctions.</p>
+</div>
+<div class="glass-panel p-10 rounded-[2rem] border-l-4 border-l-tertiary space-y-4">
+<span class="material-symbols-outlined text-tertiary text-4xl">quiz</span>
+<h3 class="font-headline-lg text-2xl font-bold">Planet Quizzes</h3>
+<p class="font-body-md text-on-surface-variant">Test your knowledge with orbital challenges before advancing to next systems.</p>
+</div>
+<div class="glass-panel p-10 rounded-[2rem] border-l-4 border-l-secondary-fixed-dim space-y-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-4xl">psychology</span>
+<h3 class="font-headline-lg text-2xl font-bold">NOVA AI</h3>
+<p class="font-body-md text-on-surface-variant">Your personal co-pilot AI assistant, available for real-time guidance.</p>
+</div>
+<div class="glass-panel p-10 rounded-[2rem] border-l-4 border-l-primary-container space-y-4">
+<span class="material-symbols-outlined text-primary-container text-4xl">museum</span>
+<h3 class="font-headline-lg text-2xl font-bold">Artifacts Museum</h3>
+<p class="font-body-md text-on-surface-variant">Collect badges, special ship skins, and coding artifacts as you learn.</p>
+</div>
+<div class="glass-panel p-10 rounded-[2rem] border-l-4 border-l-error space-y-4">
+<span class="material-symbols-outlined text-error text-4xl">leaderboard</span>
+<h3 class="font-headline-lg text-2xl font-bold">Leaderboards</h3>
+<p class="font-body-md text-on-surface-variant">Compete with other pilots in the Galactic Ranking system.</p>
+</div>
+</div>
+</section>
+<!-- Section 6: Gamification HUD -->
+<section class="py-24 bg-surface-container-lowest/80 backdrop-blur-md border-y border-white/5">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="flex-1 space-y-8">
+<h2 class="font-display-lg text-display-lg font-bold">Flight Status HUD</h2>
+<p class="font-body-md text-on-surface-variant">Monitor your progress in real-time with our immersive dashboard. Your ship evolves as your coding skills sharpen.</p>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-label-caps text-label-caps text-primary">
+<span>Knowledge Energy (XP)</span>
+<span>7,450 / 10,000</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="hud-bar-fill h-full w-[74.5%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-caps text-label-caps text-secondary">
+<span>Logic Shield Capacity</span>
+<span>88%</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="hud-bar-fill h-full w-[88%] bg-secondary-fixed-dim"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-6 rounded-2xl">
+<span class="block font-label-caps text-on-surface-variant uppercase text-[10px] mb-1">Ship Class</span>
+<span class="text-xl font-bold text-white">Voyager Mk-II</span>
+</div>
+<div class="glass-panel p-6 rounded-2xl">
+<span class="block font-label-caps text-on-surface-variant uppercase text-[10px] mb-1">Daily Streak</span>
+<span class="text-xl font-bold text-white">12 Cycles</span>
+</div>
+</div>
+</div>
+<div class="flex-1 relative">
+<div class="glass-panel p-2 rounded-[2.5rem] bg-gradient-to-br from-primary/10 to-secondary/10">
+<div class="bg-surface-dim rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative">
+<!-- Mockup Screen -->
+<div class="p-8 space-y-6">
+<div class="flex items-center justify-between border-b border-white/5 pb-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A futuristic portrait of a young male programmer with subtle cybernetic enhancements on his temple. The lighting is low-key with sharp cyan and purple edge lights, creating a cool, high-tech atmosphere. He looks determined and focused. The background is a blurred digital workspace with code projections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIinThkf-xWiCKAxeBWQQlirYx8luECmQgjHako3kGxmvo_WO2bhseB2B5sYKQ_9M3SqmepCYLKSXdj9eTz9VPELH1UfXNgo_ZVYsQgt692gVsHsfFgOo02xH8eMrstwUxd7NHS9-pGfR5FMeiF2cyMk5F1AZdsAm1nEPd-P-7zTBVVs5LeOLJgGmE1UTlrxCjHq1Lj3uNtdUf57NmX8xB0pjlwtzyO1A05Vs1Y8CB661sATKzNrD-SiTTBB6847MQOfZKAlTVQpX2">
+</div>
+<div>
+<h4 class="font-bold">Pilot_01</h4>
+<span class="text-[10px] text-primary font-label-caps">SENIOR ARCHITECT</span>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="px-3 py-1 bg-primary/20 rounded-full border border-primary/40 text-[10px] text-primary">LVL 42</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-4 rounded-xl space-y-1">
+<span class="text-[10px] opacity-50 uppercase">Missions Done</span>
+<span class="text-lg font-bold">142</span>
+</div>
+<div class="bg-surface-container p-4 rounded-xl space-y-1">
+<span class="text-[10px] opacity-50 uppercase">Success Rate</span>
+<span class="text-lg font-bold">94.2%</span>
+</div>
+</div>
+<div class="h-32 rounded-xl bg-surface-container-lowest flex items-end justify-between p-4 gap-2">
+<div class="flex-1 bg-primary/40 rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t-sm h-[60%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-sm h-[30%]"></div>
+<div class="flex-1 bg-primary/80 rounded-t-sm h-[90%]"></div>
+<div class="flex-1 bg-primary/50 rounded-t-sm h-[55%]"></div>
+<div class="flex-1 bg-primary/100 rounded-t-sm h-[100%] shadow-[0_0_15px_#c4c0ff]"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm h-[20%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating HUD Elements -->
+<div class="absolute -top-6 -right-6 glass-panel px-4 py-2 rounded-full border-secondary/40 text-secondary flex items-center gap-2 animate-pulse">
+<span class="material-symbols-outlined text-sm">wifi_tethering</span>
+<span class="text-[10px] font-bold">UPLINK ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: NOVA AI -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="glass-panel p-12 rounded-[3rem] bg-gradient-to-br from-secondary/5 to-primary/5 flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 blur-[100px] -z-10"></div>
+<div class="w-full md:w-1/2 space-y-8 order-2 md:order-1">
+<div class="flex items-center gap-4">
+<div class="w-12 h-[2px] bg-secondary"></div>
+<span class="font-label-caps text-secondary uppercase tracking-[0.3em]">Holographic Assistant</span>
+</div>
+<h2 class="font-display-lg text-display-lg font-bold">Meet NOVA AI</h2>
+<p class="font-body-md text-on-surface-variant">NOVA is an advanced neural-organic visual assistant designed to analyze your code and provide contextual hints without giving away the solution. She learns from your mistakes to offer better guidance.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Real-time Code Analysis &amp; Optimization
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            Contextual Mission Debriefing
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                            System Health Monitoring (Burnout Detection)
+                        </li>
+</ul>
+<button class="px-8 py-3 rounded-xl bg-secondary-fixed text-on-secondary-fixed font-bold secondary-glow transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined">forum</span>
+                        Ask NOVA
+                    </button>
+</div>
+<div class="w-full md:w-1/2 relative flex justify-center order-1 md:order-2">
+<div class="relative w-80 h-80">
+<div class="absolute inset-0 bg-secondary/20 rounded-full blur-[40px] animate-pulse"></div>
+
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: Testimonials -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16 space-y-4">
+<h2 class="font-display-lg text-headline-lg font-bold">Communique From The Fleet</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-panel p-8 rounded-3xl space-y-6">
+<div class="flex gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant">"I've tried dozens of coding platforms, but AlgoLingo's space setting kept me engaged for months. I finally understand pointer arithmetic after the 'Asteroid Field' mission!"</p>
+<div class="flex items-center gap-4 border-t border-white/5 pt-6">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional-looking young woman with light makeup and a warm smile, wearing a casual dark tech-themed hoodie. The setting is a cozy, modern study room with soft warm ambient lighting and a hint of a glowing computer monitor reflecting on her face. The style is bright yet focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDMZgwb8Tn9ltQMJABS56VDZvQdOGKnifRmXG3DdB1_BXbNiQitge2b1fTVlhH_g28iKxnBY0pEn3dsMGQCDN-mPwyt-_kvT1zcnQBOv3ehrjidwG7M-tCxI_7m9WKFrwRZdJtCHRuPh3BUmzkIbOwfNzprDRSz92opA2wDrtulGcNy-SgqIovxwG5F0IQB8A4ZcZ9EpSbRlTvHhUYiH9HBZoNYbSumUAPRsKreuiCKpFYlaQTRo0UzP8d9qbfUX95OVnmDTkcs16w">
+</div>
+<div>
+<p class="font-bold text-sm">Elena Vance</p>
+<p class="text-[10px] text-primary">Level 68 Python Specialist</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-3xl space-y-6">
+<div class="flex gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant">"The gamification isn't just a layer—it's woven into the learning logic. Solving C++ leaks felt like repairing an actual hull breach. Pure genius."</p>
+<div class="flex items-center gap-4 border-t border-white/5 pt-6">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a confident young man with short dark hair, wearing a sleek black futuristic jacket. He is standing in a brightly lit technical lab with glowing screens and equipment in the background. The lighting is balanced and crisp, highlighting his friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBic_Mfxr38hynFTvRZx61XnWbUQAY3Y68HET3PtQ_2SxOgWrOIysF1vMzVHeiwy1l0dzZw7Y2KuRCPwbXdoXaSYy0XD_t1GUrpZsrC5spK0crEUtS5Xhm5GR-Nggfh59YaPyJGGezyEYIgwTTah4FhZsWjHa9C4SMLKrlmFuhFvCyQqGtc8prmUJi4B0gXU_xAJiuHMobSjDtzF-eWH-PGdAFNdxM_FceM5GOMQTW4hme13yV6hq9Kjq9KqekCO3RAqonBKwYOfKzL">
+</div>
+<div>
+<p class="font-bold text-sm">Marcus Kincaid</p>
+<p class="text-[10px] text-primary">Senior Galactic Architect</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-3xl space-y-6">
+<div class="flex gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant">"NOVA AI helped me through a recursive function planet that I've been stuck on for years. The feedback loop here is just incredible."</p>
+<div class="flex items-center gap-4 border-t border-white/5 pt-6">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A happy and energetic young woman with long dark hair, wearing a modern blue tech outfit. She is in a high-tech control room with large holographic displays showing data patterns. The environment is vibrant with cyan and purple neon lights, creating a high-energy sci-fi atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxm7XOraveuVOTzZE8X-w2jgmcWq5TFQzQmiOPtkk-C3CliXu2NSYERhmgHo8KfQZ9u34ZV7v21Z7Zs-m2bJtuNQjxsLJd27EuoQ8sujHB1jyvraftmTIkx0h1tdHFt7Kh00kWi8a6i3nK4tOqoBkrol-R1NnHc_Gb9k5K5Vk1ocdMzkQEdluQyAKp20KjA969bHUnjzWK-u1g6WlMtIr1JryXt7E4J2EhJNyJxo-vYScWQOC3c8qi4ghg2fnn0QBk_7uhjWKAiCYR">
+</div>
+<div>
+<p class="font-bold text-sm">Sarah Jenkins</p>
+<p class="text-[10px] text-primary">Mission Specialist</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 9: Final CTA -->
+<section class="py-32 px-margin-desktop text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent -z-10"></div>
+<div class="max-w-4xl mx-auto space-y-12 animate-fade-in-up">
+<h2 class="font-display-lg text-display-lg md:text-[80px] font-bold">Your Galaxy Awaits</h2>
+<p class="font-headline-lg text-on-surface-variant">Join 500,000+ pilots mastering the digital void. Your first mission is ready for ignition.</p>
+<div class="flex justify-center gap-6">
+<button class="px-16 py-6 rounded-2xl bg-gradient-to-r from-primary to-secondary-fixed-dim text-on-primary-container font-extrabold text-2xl primary-glow transition-all hover:scale-110 active:scale-95 shadow-[0_0_40px_rgba(196,192,255,0.4)]">
+                        Launch Mission
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Section 10: Footer -->
+<footer class="bg-surface-container-lowest mt-20 border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">AlgoLingo</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Building the next generation of interstellar engineers through immersive gamified education.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Fleet Commands</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Academy Access</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Global Ranking</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Ship Hangar</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Mission Logs</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Protocol</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Protocol</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Service Terms</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Carrier Status</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Support Deck</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Connect</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-white/5">
+<p class="text-[10px] text-tertiary font-label-caps mb-2">GALACTIC NEWSLETTER</p>
+<div class="flex">
+<input class="bg-transparent border-none text-xs focus:ring-0 w-full" placeholder="Pilot Email" type="text">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-white/5 py-8 px-margin-desktop text-center">
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60">© 2024 AlgoLingo Interstellar. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and entrance animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const panels = document.querySelectorAll('.glass-panel');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            panels.forEach(panel => observer.observe(panel));
+        });
+    </script>
+</body></html>

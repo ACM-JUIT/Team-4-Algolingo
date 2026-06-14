@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(18, 27, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel:hover {
+            border-color: rgba(196, 192, 255, 0.3);
+            background: rgba(18, 27, 51, 0.6);
+            transform: translateY(-2px);
+        }
+        .text-glow-primary {
+            text-shadow: 0 0 20px rgba(196, 192, 255, 0.4);
+        }
+        .artifact-museum-case {
+            background: radial-gradient(circle at center, rgba(196, 192, 255, 0.1) 0%, transparent 70%);
+            border: 1px solid rgba(196, 192, 255, 0.15);
+            box-shadow: inset 0 0 50px rgba(196, 192, 255, 0.05), 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #c4c0ff 0%, #00e3fd 100%);
+        }
+        .orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(196, 192, 255, 0.1);
+            animation: spin var(--duration) linear infinite;
+        }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .premium-card-gradient {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001f24",
+                        "tertiary-fixed-dim": "#bdc6e5",
+                        "on-surface": "#d4e4fa",
+                        "inverse-on-surface": "#233143",
+                        "surface-variant": "#273647",
+                        "surface-container": "#122131",
+                        "on-secondary": "#00363d",
+                        "primary-fixed": "#e3dfff",
+                        "secondary-fixed": "#9cf0ff",
+                        "background": "#051424",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#010f1f",
+                        "primary-container": "#8781ff",
+                        "secondary-fixed-dim": "#00daf3",
+                        "on-primary-container": "#1b0091",
+                        "inverse-primary": "#4f44e2",
+                        "outline": "#918fa1",
+                        "on-background": "#d4e4fa",
+                        "secondary-container": "#00e3fd",
+                        "on-primary-fixed": "#100069",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#dae1ff",
+                        "tertiary-container": "#8790ae",
+                        "primary": "#c4c0ff",
+                        "outline-variant": "#464555",
+                        "surface-bright": "#2c3a4c",
+                        "surface-container-highest": "#273647",
+                        "surface-container-high": "#1c2b3c",
+                        "secondary": "#bdf4ff",
+                        "inverse-surface": "#d4e4fa",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#c4c0ff",
+                        "on-tertiary-fixed": "#121b33",
+                        "surface-dim": "#051424",
+                        "on-secondary-container": "#00616d",
+                        "on-primary": "#2000a4",
+                        "on-tertiary": "#273049",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#0d1c2d",
+                        "on-tertiary-fixed-variant": "#3d4660",
+                        "on-primary-fixed-variant": "#3622ca",
+                        "tertiary": "#bdc6e5",
+                        "on-surface-variant": "#c7c4d8",
+                        "on-tertiary-container": "#202942",
+                        "surface": "#051424"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface">
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
+<div class="absolute top-1/4 -right-1/4 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px]"></div>
+<div class="absolute bottom-1/4 -left-1/4 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px]"></div>
+</div>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-background/40 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-margin-desktop py-5 max-w-container-max mx-auto">
+<div class="font-display-lg text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                AlgoLingo
+            </div>
+<div class="hidden md:flex items-center gap-10 font-label-caps text-xs tracking-widest uppercase">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terminal</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Galaxy Explorer</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Artifacts</a>
+<a class="text-primary" href="#">Explorer Identity</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary hover:scale-110 transition-transform">bolt</button>
+<div class="w-10 h-10 rounded-full border border-primary/30 p-0.5 overflow-hidden">
+<img alt="User Avatar" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLuMfADzL3UDO2_1C66y7_wMGXUQzyb6RIcR3WTC0ybZ_jPh6mWUVwcQhZkscsUOYwzpqcTjfXcrfONawVrfkHzz1Rnfeo_PkKGHA0ZUJqB3UWZhHjyJsqDg6m4Y8cWPT9bLnklCsAjtkRiVeogvusXh2Vnx21c64WSKCAOZ8Sw3FhjKOCoVqkdDO8xzq0P4wAG43xRba5abVXAEfbJp3CktutwPt3VOD0aUY0ediBxAigPEaf-zQGn2UWQ"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto">
+<!-- Explorer Hero Section -->
+<section class="flex flex-col items-center mb-24">
+<div class="relative mb-12 group">
+<!-- Decorative Orbitals -->
+<div class="orbit-ring w-[380px] h-[380px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="--duration: 15s"></div>
+<div class="orbit-ring w-[420px] h-[420px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50" style="--duration: 25s; border-style: dashed;"></div>
+<div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-[12px] border-surface-container-high p-3 bg-background shadow-[0_0_80px_rgba(196,192,255,0.15)] relative z-10">
+<img alt="Suryansh Avatar" class="w-full h-full rounded-full object-cover transition-transform group-hover:scale-[1.02] duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLuMfADzL3UDO2_1C66y7_wMGXUQzyb6RIcR3WTC0ybZ_jPh6mWUVwcQhZkscsUOYwzpqcTjfXcrfONawVrfkHzz1Rnfeo_PkKGHA0ZUJqB3UWZhHjyJsqDg6m4Y8cWPT9bLnklCsAjtkRiVeogvusXh2Vnx21c64WSKCAOZ8Sw3FhjKOCoVqkdDO8xzq0P4wAG43xRba5abVXAEfbJp3CktutwPt3VOD0aUY0ediBxAigPEaf-zQGn2UWQ"/>
+<div class="absolute bottom-6 right-6 bg-green-500 w-8 h-8 rounded-full border-4 border-background shadow-[0_0_15px_rgba(34,197,94,0.4)]"></div>
+</div>
+</div>
+<div class="text-center max-w-3xl">
+<h1 class="font-display-lg text-6xl md:text-7xl mb-6 text-glow-primary tracking-tight">Suryansh</h1>
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+<span class="px-6 py-2 rounded-full border border-primary/20 bg-primary/10 text-primary font-label-caps text-xs tracking-widest">Code Navigator</span>
+<span class="px-6 py-2 rounded-full border border-secondary/20 bg-secondary/10 text-secondary font-label-caps text-xs tracking-widest">Commander League</span>
+<span class="px-6 py-2 rounded-full border border-white/10 bg-white/5 text-on-surface-variant font-label-caps text-xs tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">language</span>
+                        Python Nebula
+                    </span>
+</div>
+<!-- NOVA Insights (Compact) -->
+<div class="glass-panel py-3 px-8 rounded-full inline-flex items-center gap-4 border-primary/10 mb-12">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<p class="font-body-md text-sm text-on-surface-variant">You have completed <span class="text-primary font-bold">51%</span> of Python Nebula. You are among the top explorers in <span class="text-primary font-bold">Commander League</span>. Complete OOP Station to unlock your next Legendary Artifact.</p>
+</div>
+</div>
+</section>
+<!-- Redesigned Stat Cards -->
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-24">
+<div class="glass-panel p-8 rounded-2xl text-center border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">bolt</span>
+<p class="text-3xl font-display-lg font-bold">12,450</p>
+<p class="font-label-caps text-[10px] text-outline mt-2 uppercase tracking-widest">Knowledge Energy</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-white/5">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4">local_fire_department</span>
+<p class="text-3xl font-display-lg font-bold">15 Days</p>
+<p class="font-label-caps text-[10px] text-outline mt-2 uppercase tracking-widest">Current Streak</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-white/5">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4">auto_awesome</span>
+<p class="text-3xl font-display-lg font-bold">22</p>
+<p class="font-label-caps text-[10px] text-outline mt-2 uppercase tracking-widest">Artifacts Collected</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">public</span>
+<p class="text-3xl font-display-lg font-bold">4</p>
+<p class="font-label-caps text-[10px] text-outline mt-2 uppercase tracking-widest">Planets Conquered</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-white/5">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4">explore</span>
+<p class="text-3xl font-display-lg font-bold">48</p>
+<p class="font-label-caps text-[10px] text-outline mt-2 uppercase tracking-widest">Discoveries</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center border-white/5">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4">analytics</span>
+<p class="text-3xl font-display-lg font-bold">92%</p>
+<p class="font-label-caps text-[10px] text-outline mt-2 uppercase tracking-widest">Quiz Accuracy</p>
+</div>
+</section>
+<!-- Museum-Style Featured Artifact Showcase -->
+<section class="mb-32">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="font-display-lg text-3xl">Legendary Exhibit</h2>
+<div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+</div>
+<div class="glass-panel rounded-3xl overflow-hidden flex flex-col lg:flex-row border-primary/10 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.6)]">
+<div class="lg:w-3/5 p-12 lg:p-20 flex flex-col justify-center order-2 lg:order-1">
+<div class="inline-flex items-center gap-3 mb-8">
+<span class="bg-yellow-500 text-black text-[10px] font-black font-label-caps px-3 py-1 rounded-sm uppercase">Legendary</span>
+<span class="text-outline font-label-caps text-xs tracking-widest">ID: 771-EXP-X</span>
+</div>
+<h3 class="font-display-lg text-5xl mb-6 text-glow-primary">🏅 Function Explorer</h3>
+<p class="text-on-surface-variant font-body-md text-lg leading-relaxed mb-10 max-w-xl"><span class="block text-xs font-label-caps text-primary mb-4">Earned: October 24, 2142</span>
+Awarded for masterful implementation of recursive logic across the Logic Sector. This prestigious artifact signifies a deep understanding of functional architecture and recursive flow. 
+<br/><br/>
+<div class="bg-secondary/10 border border-secondary/20 p-4 rounded-xl">
+<span class="text-secondary font-semibold flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-sm">bolt</span>
+        Artifact Power:
+    </span>
+<p class="text-sm">Boosts Knowledge Energy gain by 15% across all Python Nebula stations.</p>
+</div></p>
+<div class="flex gap-6">
+<button class="bg-primary text-on-primary-container px-10 py-4 rounded-xl font-bold hover:brightness-110 transition-all flex items-center gap-3">
+                            Inspect Artifact
+                            <span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="px-10 py-4 rounded-xl font-bold border border-white/10 hover:bg-white/5 transition-all">
+                            Exhibit History
+                        </button>
+</div>
+</div>
+<div class="lg:w-2/5 p-8 lg:p-12 order-1 lg:order-2">
+<div class="artifact-museum-case rounded-2xl h-full min-h-[400px] flex items-center justify-center relative group shadow-[0_0_100px_rgba(196,192,255,0.2)]">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<img alt="Function Explorer Artifact" class="w-4/5 h-4/5 object-contain drop-shadow-[0_0_50px_rgba(196,192,255,0.6)] relative z-10 transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa0fVHB2BaOA5vm_ey7MgMwlUxdRtGYrHV36aJjckzqmtIx7ZtGkeer6uaj1a9UNBAg6Hc3DC7vr6mYRhjHwvKziZTpdneDVW28nnLIIu0AAGkv0O3oh5KRjzQVnxiSy9-0Pgq5bwFZrB2h5Z7V5Sk3s0OHCfLOVGhfisgFeddHJAm-Q7sn_5Rg61rBr6VLn6c4Jje4zQMI2-eHmMwgz7o51pzTRU-GtArXgkWIuQ55nF5SI4r30bwU_rEqSwKOkit_3qMNVbnrai8"/>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Journey Log -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Section 1: GALAXY PROGRESSION -->
+<div class="glass-panel p-8 rounded-3xl border-primary/10">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">explore</span>
+<h3 class="font-display-lg text-2xl">Galaxy Progression</h3>
+</div>
+<span class="font-label-caps text-xs text-secondary tracking-widest">51% COMPLETE</span>
+</div>
+<div class="mb-10">
+<div class="flex justify-between text-xs font-label-caps text-outline mb-3">
+<span>🐍 Python Nebula</span>
+<span>4 / 8 Planets</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[51%] shadow-[0_0_15px_rgba(196,192,255,0.5)]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6 mb-10">
+<div class="bg-white/5 p-4 rounded-xl border border-white/5">
+<p class="text-[10px] font-label-caps text-outline uppercase mb-1">Current Planet</p>
+<p class="font-bold flex items-center gap-2">🌍 OOP Station</p>
+</div>
+<div class="bg-white/5 p-4 rounded-xl border border-white/5">
+<p class="text-[10px] font-label-caps text-outline uppercase mb-1">Next Destination</p>
+<p class="font-bold flex items-center gap-2">🌍 Data Structure Core</p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary-container py-3 rounded-xl font-bold text-sm hover:brightness-110 transition-all">Continue Journey</button>
+<button class="flex-1 border border-white/10 hover:bg-white/5 py-3 rounded-xl font-bold text-sm transition-all">Open Galaxy Explorer</button>
+</div>
+</div>
+<!-- Section 2: ARTIFACT COLLECTION PROGRESS -->
+<div class="glass-panel p-8 rounded-3xl border-primary/10">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">account_balance</span>
+<h3 class="font-display-lg text-2xl">Artifact Collection</h3>
+</div>
+<span class="font-label-caps text-xs text-tertiary tracking-widest">22 / 60 COLLECTED</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-white/5" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-tertiary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="233.2" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold">36%</span>
+</div>
+</div>
+<div class="flex-1 w-full space-y-4">
+<div class="flex justify-between items-end">
+<p class="text-[10px] font-label-caps text-outline uppercase">Rarity Distribution</p>
+</div>
+<div class="flex h-2 w-full rounded-full overflow-hidden">
+<div class="h-full bg-white/20 w-[54%]"></div>
+<div class="h-full bg-secondary/40 w-[27%]"></div>
+<div class="h-full bg-primary/60 w-[14%]"></div>
+<div class="h-full bg-yellow-500 w-[5%]"></div>
+</div>
+<div class="flex justify-between text-[9px] font-label-caps text-outline/60">
+<span>Common: 12</span>
+<span>Rare: 6</span>
+<span>Epic: 3</span>
+<span class="text-yellow-500">Legendary: 1</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-tertiary text-on-tertiary-container py-3 rounded-xl font-bold text-sm hover:brightness-110 transition-all">Open Artifact Museum</button>
+<button class="flex-1 border border-white/10 hover:bg-white/5 py-3 rounded-xl font-bold text-sm transition-all">View Progress</button>
+</div>
+</div>
+<!-- Section 3: NEXT OBJECTIVES -->
+<div class="glass-panel p-6 rounded-2xl border-white/5">
+<h4 class="font-label-caps text-xs tracking-widest text-outline mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">target</span>
+            NEXT OBJECTIVES
+        </h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-lg">radio_button_unchecked</span>
+<span>Complete OOP Station</span>
+</div>
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-secondary text-lg">radio_button_unchecked</span>
+<span>Earn 500 KE</span>
+</div>
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-tertiary text-lg">radio_button_unchecked</span>
+<span>Unlock Next Artifact</span>
+</div>
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-lg">radio_button_unchecked</span>
+<span>Reach Top 10</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Shareable Identity Card -->
+<div class="lg:col-span-5">
+<div class="flex items-center gap-4 mb-10">
+<span class="material-symbols-outlined text-primary">badge</span>
+<h3 class="font-headline-lg text-2xl">Identity Core</h3>
+</div>
+<div class="relative group">
+<!-- Collectible Card Style -->
+<div class="bg-gradient-to-br from-primary/30 via-secondary/30 to-tertiary/30 p-px rounded-[2.5rem] shadow-2xl">
+<div class="bg-[#0b172a] rounded-[2.45rem] overflow-hidden relative premium-card-gradient">
+<!-- Background Textures -->
+<div class="absolute top-0 right-0 p-8 opacity-[0.03] select-none pointer-events-none">
+<span class="font-display-lg text-9xl">EXPLORER</span>
+</div>
+<div class="p-10">
+<div class="flex justify-between items-start mb-10">
+<div class="w-24 h-24 rounded-2xl overflow-hidden border-2 border-white/20">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLuMfADzL3UDO2_1C66y7_wMGXUQzyb6RIcR3WTC0ybZ_jPh6mWUVwcQhZkscsUOYwzpqcTjfXcrfONawVrfkHzz1Rnfeo_PkKGHA0ZUJqB3UWZhHjyJsqDg6m4Y8cWPT9bLnklCsAjtkRiVeogvusXh2Vnx21c64WSKCAOZ8Sw3FhjKOCoVqkdDO8xzq0P4wAG43xRba5abVXAEfbJp3CktutwPt3VOD0aUY0ediBxAigPEaf-zQGn2UWQ"/>
+</div>
+<div class="text-right"><p class="font-label-caps text-[10px] text-outline tracking-widest uppercase">Explorer ID</p>
+<p class="font-code-sm text-primary text-sm">#ALGO-771-X</p>
+<div class="mt-2 inline-flex items-center gap-1 bg-primary/10 px-2 py-0.5 rounded text-[9px] font-bold text-primary">
+<span class="material-symbols-outlined text-[10px]">trending_up</span>
+    TOP 12%
+</div></div>
+</div>
+<div class="mb-10">
+<h4 class="font-display-lg text-4xl mb-1">Suryansh</h4>
+<p class="font-label-caps text-secondary text-xs tracking-[0.3em] uppercase">Code Navigator</p>
+</div>
+<div class="grid grid-cols-2 gap-y-8 gap-x-4 pt-10 border-t border-white/10">
+<div>
+<p class="font-label-caps text-[9px] text-outline uppercase tracking-widest mb-1">Current League</p>
+<p class="font-bold text-lg">Commander</p>
+</div>
+<div>
+<p class="font-label-caps text-[9px] text-outline uppercase tracking-widest mb-1">Energy Level</p>
+<p class="font-bold text-lg">12,450</p>
+</div>
+<div>
+<p class="font-label-caps text-[9px] text-outline uppercase tracking-widest mb-1">Galaxy Sector</p>
+<p class="font-bold text-lg">Python Nebula</p>
+</div>
+<div class="flex justify-end items-end">
+<span class="material-symbols-outlined text-primary/50 text-4xl">qr_code_2</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar -->
+<div class="bg-white/5 p-6 flex gap-4">
+<button class="flex-1 bg-primary text-on-primary-container py-3 rounded-xl font-bold text-sm tracking-wide hover:brightness-110 transition-all"><span class="flex items-center justify-center gap-2">
+    Share Profile
+    <span class="material-symbols-outlined text-sm">share</span>
+</span></button>
+<button class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 border border-white/10 text-white hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Profile Quick Actions -->
+<div class="mt-8 flex justify-center gap-8">
+<button class="flex items-center gap-2 text-outline hover:text-primary transition-colors font-label-caps text-xs tracking-widest">
+<span class="material-symbols-outlined text-sm">edit_square</span>
+                            EDIT IDENTITY
+                        </button>
+<button class="flex items-center gap-2 text-outline hover:text-primary transition-colors font-label-caps text-xs tracking-widest">
+<span class="material-symbols-outlined text-sm">settings</span>
+                            TERMINAL CONFIG
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 mt-24 border-t border-white/5 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="flex flex-col gap-2">
+<div class="font-display-lg text-xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary/60 to-secondary/60">
+                    AlgoLingo
+                </div>
+<div class="font-label-caps text-[10px] text-outline/40 tracking-[0.4em]">EXPLORER TERMINAL V2.4</div>
+</div>
+<div class="flex gap-12">
+<a class="font-label-caps text-[10px] text-outline hover:text-primary transition-colors tracking-widest" href="#">Privacy Protocol</a>
+<a class="font-label-caps text-[10px] text-outline hover:text-primary transition-colors tracking-widest" href="#">Support Matrix</a>
+<a class="font-label-caps text-[10px] text-outline hover:text-primary transition-colors tracking-widest" href="#">Terms of Discovery</a>
+</div>
+<div class="font-label-caps text-[9px] text-outline/30 text-right">
+                © 2142 ALGOLINGO TERMINAL. ALL SYSTEMS OPTIMIZED.
+            </div>
+</div>
+</footer>
+<script>
+        // Subtle Mouse Interaction for Premium Glass Panels
+        document.addEventListener('mousemove', (e) => {
+            const panels = document.querySelectorAll('.glass-panel');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            panels.forEach(panel => {
+                const rect = panel.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const dist = Math.sqrt(Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2));
+                
+                if (dist < 400) {
+                    const intensity = (1 - dist / 400) * 0.3;
+                    panel.style.borderColor = `rgba(196, 192, 255, ${intensity})`;
+                } else {
+                    panel.style.borderColor = `rgba(255, 255, 255, 0.05)`;
+                }
+            });
+        });
+    </script>
+</body></html>
