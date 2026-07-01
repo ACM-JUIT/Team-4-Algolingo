@@ -1,0 +1,136 @@
+].dashboard{
+    display:flex;
+    min-height:100vh;
+    background:#f4f7fb;
+}
+
+.sidebar{
+    width:250px;
+    background:#58CC02;
+    color:white;
+    padding:30px;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar li{
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.sidebar li:hover{
+    background:white;
+    color:#58CC02;
+}
+
+.main-content{
+    flex:1;
+    padding:40px;
+}
+
+.welcome-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.stat-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-card h2{
+    color:#58CC02;
+    font-size:36px;
+}
+
+.continue-learning{
+    margin-top:30px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.continue-btn{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    background:#58CC02;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.continue-btn:hover{
+    background:#46b001;
+}
+
+.progress-bar{
+    width:100%;
+    height:15px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.progress-fill{
+    width:65%;
+    height:100%;
+    background:#58CC02;
+}
+
+
+/* Achievements */
+
+.achievements{
+    margin-top:40px;
+}
+
+.achievement-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.achievement-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.achievement-card:hover{
+    transform:translateY(-5px);
+}
+
+.achievement-card h3{
+    color:#58CC02;
+    margin-bottom:10px;
+}

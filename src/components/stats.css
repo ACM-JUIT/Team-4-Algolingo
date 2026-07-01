@@ -1,0 +1,41 @@
+.stats{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    padding:70px 40px;
+    background:#58CC02;
+    flex-wrap:wrap;
+}
+
+.stat-card{
+    background:white;
+    width:220px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:scale(1.05);
+}
+
+.stat-card h1{
+    color:#58CC02;
+    font-size:42px;
+}
+
+.stat-card p{
+    margin-top:10px;
+    color:#444;
+    font-size:18px;
+}
+
+@media(max-width:900px){
+
+.stats{
+flex-direction:column;
+}
+
+}
