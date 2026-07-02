@@ -1,0 +1,69 @@
+.result-page{
+    min-height:100vh;
+    background:#58CC02;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.result-card{
+    width:500px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.result-card h1{
+    color:#58CC02;
+    margin-bottom:20px;
+}
+
+.result-card h2{
+    margin-bottom:30px;
+}
+
+.score-circle{
+    width:140px;
+    height:140px;
+    margin:20px auto;
+    border-radius:50%;
+    background:#58CC02;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:36px;
+    font-weight:bold;
+}
+
+.button-group{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.retry-btn,
+.dashboard-btn{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.retry-btn{
+    background:#ff9800;
+}
+
+.dashboard-btn{
+    background:#58CC02;
+}
+
+.retry-btn:hover,
+.dashboard-btn:hover{
+    opacity:0.9;
+}

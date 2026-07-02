@@ -1,0 +1,85 @@
+.learning-page{
+    min-height:100vh;
+    background:#f7f7f7;
+    padding:40px;
+}
+
+.learning-page h1{
+    text-align:center;
+    color:#58CC02;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:50px;
+}
+
+.roadmap{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:35px;
+}
+
+.lesson-container{
+    text-align:center;
+}
+
+.lesson-circle{
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+    margin:auto;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.lesson-circle:hover{
+
+    transform:scale(1.1);
+
+}
+
+.completed{
+
+    background:#58CC02;
+
+    color:white;
+
+}
+
+.current{
+
+    background:orange;
+
+    color:white;
+
+}
+
+.available{
+
+    background:#3498db;
+
+    color:white;
+
+}
+
+.locked{
+
+    background:#ccc;
+
+}
