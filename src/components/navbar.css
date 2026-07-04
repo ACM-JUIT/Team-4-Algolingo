@@ -12,27 +12,11 @@
   z-index: 100;
 }
 
-.logo h2 {
+.logo {
   color: #58CC02;
   font-size: 32px;
   font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 35px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #444;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  color: #58CC02;
+  margin: 0;
 }
 
 .nav-buttons {
@@ -48,6 +32,7 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 .login-btn {
@@ -70,18 +55,15 @@
   background: #46a602;
 }
 
-/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-@media (max-width:768px) {
-
-.navbar{
-padding:20px;
-flex-direction:column;
-gap:20px;
-}
-
-.nav-links{
-gap:20px;
-}
-
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
 }

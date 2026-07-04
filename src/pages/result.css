@@ -1,69 +1,114 @@
-.result-page{
-    min-height:100vh;
-    background:#58CC02;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.result-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #58CC02, #46a602);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.result-card{
-    width:500px;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
+.result-card {
+    width: 520px;
+    max-width: 100%;
+    background: white;
+    padding: 45px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-.result-card h1{
-    color:#58CC02;
-    margin-bottom:20px;
+.result-card h1 {
+    color: #58CC02;
+    margin-bottom: 15px;
+    font-size: 38px;
 }
 
-.result-card h2{
-    margin-bottom:30px;
+.result-card h2 {
+    margin-bottom: 30px;
+    color: #444;
+    font-size: 28px;
 }
 
-.score-circle{
-    width:140px;
-    height:140px;
-    margin:20px auto;
-    border-radius:50%;
-    background:#58CC02;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:36px;
-    font-weight:bold;
+.score-circle {
+    width: 150px;
+    height: 150px;
+    margin: 25px auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #58CC02, #46a602);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(88,204,2,0.35);
 }
 
-.button-group{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
-    gap:20px;
+.button-group {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .retry-btn,
-.dashboard-btn{
-    padding:12px 20px;
-    border:none;
-    border-radius:10px;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
+.dashboard-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.retry-btn{
-    background:#ff9800;
+.retry-btn {
+    background: #ff9800;
 }
 
-.dashboard-btn{
-    background:#58CC02;
+.retry-btn:hover {
+    background: #f57c00;
+    transform: translateY(-2px);
 }
 
-.retry-btn:hover,
-.dashboard-btn:hover{
-    opacity:0.9;
+.dashboard-btn {
+    background: #58CC02;
+}
+
+.dashboard-btn:hover {
+    background: #46a602;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+
+.result-card {
+    padding: 35px 25px;
+}
+
+.result-card h1 {
+    font-size: 30px;
+}
+
+.result-card h2 {
+    font-size: 22px;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    font-size: 32px;
+}
+
+.button-group {
+    flex-direction: column;
+}
+
+.retry-btn,
+.dashboard-btn {
+    width: 100%;
+}
+
 }

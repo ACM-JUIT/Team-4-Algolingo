@@ -1,26 +1,18 @@
 import { Link } from "react-router-dom";
+import "./navbar.css";
 
 function Navbar() {
   return (
-    <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "20px 50px",
-        backgroundColor: "#fff",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-      }}
-    >
-      <h2 style={{ color: "#58CC02" }}>Algolingo</h2>
+    <nav className="navbar">
+      <h2 className="logo">Algolingo</h2>
 
-      <div style={{ display: "flex", gap: "15px" }}>
+      <div className="nav-buttons">
         <Link to="/login">
-          <button>Login</button>
+          <button className="login-btn">Login</button>
         </Link>
 
         <Link to="/signup">
-          <button>Sign Up</button>
+          <button className="signup-btn">Sign Up</button>
         </Link>
       </div>
     </nav>

@@ -1,85 +1,98 @@
-.roadmap{
-
-    padding:80px;
-    background:#f7f7f7;
-    text-align:center;
-
+.roadmap {
+    padding: 90px 8%;
+    background: #f8faf8;
+    text-align: center;
 }
 
-.roadmap h2{
-
-    font-size:42px;
-    color:#58CC02;
-    margin-bottom:60px;
-
+.roadmap h2 {
+    font-size: 42px;
+    color: #58CC02;
+    margin-bottom: 60px;
+    font-weight: 700;
 }
 
-.roadmap-container{
-
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
-
+.roadmap-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
 }
 
-.roadmap-card{
-
-    background:white;
-    width:320px;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.1);
-    transition:0.3s;
-
+.roadmap-card {
+    background: #ffffff;
+    width: 320px;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #eeeeee;
 }
 
-.roadmap-card:hover{
-
-    transform:translateY(-10px);
-
+.roadmap-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(88,204,2,0.18);
 }
 
-.roadmap-card h3{
-
-    font-size:28px;
-    margin-bottom:25px;
-
+.roadmap-card h3 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #222;
 }
 
-.roadmap-card ul{
-
-    list-style:none;
-    padding:0;
-    text-align:left;
-
+.roadmap-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
 }
 
-.roadmap-card li{
-
-    margin:15px 0;
-    font-size:18px;
-    color:#555;
-
+.roadmap-card li {
+    margin: 16px 0;
+    font-size: 17px;
+    color: #666;
+    position: relative;
+    padding-left: 22px;
 }
 
-.roadmap-card button{
-
-    margin-top:25px;
-    width:100%;
-    padding:15px;
-    background:#58CC02;
-    color:white;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:18px;
-    font-weight:bold;
-
+.roadmap-card li::before {
+    content: "✔";
+    color: #58CC02;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
-.roadmap-card button:hover{
+.roadmap-card button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    background: #58CC02;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-    background:#48b001;
+.roadmap-card button:hover {
+    background: #46a602;
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+
+.roadmap {
+    padding: 70px 20px;
+}
+
+.roadmap h2 {
+    font-size: 34px;
+}
+
+.roadmap-card {
+    width: 100%;
+    max-width: 360px;
+}
 
 }
