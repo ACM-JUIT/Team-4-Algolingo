@@ -1,70 +1,57 @@
-import { useState } from "react";
+import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
 
 function Login() {
+
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const handleLogin = () => {
-    if (email === "" || password === "") {
-      alert("Please fill all the fields.");
-      return;
-    }
-
-    alert("Login Successful!");
     navigate("/dashboard");
   };
 
   return (
     <div className="login-page">
+
+      <div className="stars"></div>
+
       <div className="login-card">
 
-        <h1>Welcome Back 👋</h1>
-
-        <p>Login to continue learning.</p>
-
-        <div className="form-group">
-          <label>Email</label>
-
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
+        <div className="robot">
+          🤖
         </div>
 
-        <div className="form-group">
-          <label>Password</label>
+        <h1>Welcome Back, Explorer</h1>
 
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <p>Login to continue your mission through the Algorithm Galaxy.</p>
 
-        </div>
+        <input
+          type="email"
+          placeholder="Email"
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+        />
 
         <button
-          className="login-btn"
+          className="login-button"
           onClick={handleLogin}
         >
-          Login
+          Launch Mission 🚀
         </button>
 
-        <div className="signup-link">
-          Don't have an account?{" "}
+        <p className="signup-text">
+          New Explorer?{" "}
+
           <Link to="/signup">
-            Sign Up
+            Create Account
           </Link>
-        </div>
+
+        </p>
 
       </div>
+
     </div>
   );
 }

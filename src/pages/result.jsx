@@ -1,8 +1,10 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Result.css";
 
 function Result() {
+
   const location = useLocation();
+  const navigate = useNavigate();
 
   const score = location.state?.score || 0;
   const total = location.state?.total || 5;
@@ -12,11 +14,11 @@ function Result() {
   let message = "";
 
   if (percentage >= 80) {
-    message = "🏆 Excellent!";
+    message = "🏆 Outstanding Explorer!";
   } else if (percentage >= 60) {
-    message = "👏 Good Job!";
+    message = "🚀 Great Mission!";
   } else {
-    message = "💪 Keep Practicing!";
+    message = "🌟 Keep Exploring!";
   }
 
   return (
@@ -24,31 +26,41 @@ function Result() {
 
       <div className="result-card">
 
-        <h1>🎉 Quiz Completed!</h1>
+        <div className="trophy">
+          🏆
+        </div>
+
+        <h1>Mission Complete!</h1>
 
         <h2>{message}</h2>
 
         <div className="score-circle">
-          {percentage}%
+          {score}/{total}
         </div>
 
-        <h3>
-          Score: {score} / {total}
-        </h3>
+        <p className="xp">
+          ⭐ You earned <span>{score * 50} XP</span>
+        </p>
+
+        <p className="subtitle">
+          Keep completing missions to unlock new planets.
+        </p>
 
         <div className="button-group">
 
-          <Link to="/quiz">
-            <button className="retry-btn">
-              🔄 Retry Quiz
-            </button>
-          </Link>
+          <button
+            className="retry-btn"
+            onClick={() => navigate("/quiz")}
+          >
+            🔄 Retry Mission
+          </button>
 
-          <Link to="/dashboard">
-            <button className="dashboard-btn">
-              🏠 Dashboard
-            </button>
-          </Link>
+          <button
+            className="dashboard-btn"
+            onClick={() => navigate("/dashboard")}
+          >
+            🚀 Dashboard
+          </button>
 
         </div>
 

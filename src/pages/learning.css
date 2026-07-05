@@ -1,97 +1,133 @@
-.learning-page {
-    min-height: 100vh;
-    background: #f8faf8;
-    padding: 50px 8%;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.learning-page h1 {
-    text-align: center;
-    color: #58CC02;
-    font-size: 42px;
-    margin-bottom: 10px;
+.learning-page{
+    min-height:100vh;
+    background:radial-gradient(circle at top,#1b1f4f 0%,#0b1026 55%,#050814 100%);
+    padding:60px 8%;
+    color:white;
 }
 
-.subtitle {
-    text-align: center;
-    color: #666;
-    font-size: 18px;
-    margin-bottom: 60px;
+.learning-page h1{
+    text-align:center;
+    font-size:55px;
+    color:white;
+    text-shadow:0 0 20px #7C4DFF;
 }
 
-.roadmap {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
+.subtitle{
+    text-align:center;
+    color:#bcc2da;
+    font-size:22px;
+    margin:20px 0 70px;
 }
 
-.lesson-container {
-    text-align: center;
+.planet-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:35px;
 }
 
-.lesson-circle {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 42px;
-    margin: auto;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.planet{
+    background:rgba(27,33,72,.95);
+    border:1px solid rgba(124,77,255,.35);
+    border-radius:25px;
+    padding:35px 25px;
+    text-align:center;
+    transition:.35s;
+    box-shadow:0 0 25px rgba(124,77,255,.2);
 }
 
-.lesson-circle:hover {
-    transform: translateY(-6px) scale(1.05);
+.planet:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 40px rgba(124,77,255,.6);
 }
 
-.completed {
-    background: #58CC02;
-    color: white;
+.planet-icon{
+    font-size:70px;
+    margin-bottom:20px;
+    animation:floatPlanet 4s ease-in-out infinite;
 }
 
-.current {
-    background: #ff9800;
-    color: white;
+@keyframes floatPlanet{
+
+0%{
+    transform:translateY(0);
 }
 
-.available {
-    background: #3498db;
-    color: white;
+50%{
+    transform:translateY(-10px);
 }
 
-.locked {
-    background: #d1d5db;
-    color: #666;
+100%{
+    transform:translateY(0);
 }
 
-.lesson-container h3 {
-    margin-top: 20px;
-    color: #222;
-    font-size: 22px;
 }
 
-.lesson-container p {
-    color: #666;
-    margin-top: 8px;
-    line-height: 1.6;
+.planet h3{
+    font-size:28px;
+    margin-bottom:12px;
 }
 
-@media (max-width: 768px) {
-
-.learning-page {
-    padding: 40px 20px;
+.planet p{
+    color:#d0d5ea;
+    font-size:18px;
 }
 
-.learning-page h1 {
-    font-size: 34px;
+.completed{
+    border:2px solid #58CC02;
 }
 
-.lesson-circle {
-    width: 90px;
-    height: 90px;
-    font-size: 34px;
+.completed .planet-icon{
+    filter:drop-shadow(0 0 15px #58CC02);
+}
+
+.current{
+    border:2px solid orange;
+}
+
+.current .planet-icon{
+    filter:drop-shadow(0 0 15px orange);
+}
+
+.locked{
+    opacity:.65;
+}
+
+.locked .planet-icon{
+    filter:grayscale(100%);
+}
+
+.current button{
+    margin-top:20px;
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#7C4DFF,#4F8DFF);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.current button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(124,77,255,.6);
+}
+
+@media(max-width:768px){
+
+.learning-page h1{
+    font-size:40px;
+}
+
+.subtitle{
+    font-size:18px;
 }
 
 }

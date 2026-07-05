@@ -1,5 +1,4 @@
-import "./Footer.css";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import "./footer.css";
 
 function Footer() {
   return (
@@ -7,48 +6,45 @@ function Footer() {
 
       <div className="footer-container">
 
-        {/* Logo */}
-        <div className="footer-section">
-          <h2>Algolingo</h2>
+        <div className="footer-column">
+          <h2>🚀 AlgoLingo</h2>
+
           <p>
-            Learn Data Structures and Algorithms in a fun,
-            interactive and engaging way.
+            Explore galaxies, unlock planets, complete coding missions,
+            earn XP and become a Master Explorer.
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div className="footer-section">
+        <div className="footer-column">
           <h3>Quick Links</h3>
 
           <ul>
             <li>Home</li>
-            <li>Courses</li>
-            <li>Quizzes</li>
-            <li>Dashboard</li>
+            <li>Galaxies</li>
+            <li>Leaderboard</li>
+            <li>Daily Mission</li>
           </ul>
         </div>
 
-        {/* Contact */}
-        <div className="footer-section">
-          <h3>Contact</h3>
+        <div className="footer-column">
+          <h3>Galaxies</h3>
 
-          <p>Email: support@algolingo.com</p>
-          <p>Phone: +91 9876543210</p>
-          <p>India</p>
+          <ul>
+            <li>🐍 Python Galaxy</li>
+            <li>☕ Java Galaxy</li>
+            <li>⚙️ C++ Galaxy</li>
+          </ul>
         </div>
 
-        {/* Social */}
-        <div className="footer-section">
+        <div className="footer-column">
+          <h3>Contact</h3>
 
-          <h3>Follow Us</h3>
+          <p>📧 support@algolingo.com</p>
+          <p>🌍 Explore Beyond Limits</p>
 
-          <div className="social-icons">
-            <FaFacebook />
-            <FaInstagram />
-            <FaLinkedin />
-            <FaGithub />
+          <div className="socials">
+            🚀 ⭐ 💜 🌌
           </div>
-
         </div>
 
       </div>
@@ -56,7 +52,7 @@ function Footer() {
       <hr />
 
       <p className="copyright">
-        © 2026 Algolingo. All Rights Reserved.
+        © 2026 AlgoLingo • Learn • Explore • Practice • Master 🚀
       </p>
 
     </footer>

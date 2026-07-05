@@ -1,98 +1,78 @@
-.roadmap {
-    padding: 90px 8%;
-    background: #f8faf8;
-    text-align: center;
+.roadmap{
+    padding:100px 8%;
+    background:#0b1026;
+    text-align:center;
 }
 
-.roadmap h2 {
-    font-size: 42px;
-    color: #58CC02;
-    margin-bottom: 60px;
-    font-weight: 700;
+.roadmap h2{
+    color:white;
+    font-size:56px;
+    margin-bottom:20px;
+    text-shadow:0 0 20px #7C4DFF;
 }
 
-.roadmap-container {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    flex-wrap: wrap;
+.roadmap-subtitle{
+    color:#bcc2da;
+    font-size:22px;
+    margin-bottom:70px;
 }
 
-.roadmap-card {
-    background: #ffffff;
-    width: 320px;
-    border-radius: 20px;
-    padding: 35px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-    border: 1px solid #eeeeee;
+.roadmap-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
 }
 
-.roadmap-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 18px 35px rgba(88,204,2,0.18);
+.planet-card{
+    background:#1b2148;
+    border-radius:22px;
+    padding:40px 30px;
+    border:1px solid rgba(124,77,255,.25);
+    transition:.35s;
+    box-shadow:0 0 25px rgba(124,77,255,.15);
 }
 
-.roadmap-card h3 {
-    font-size: 28px;
-    margin-bottom: 25px;
-    color: #222;
+.planet-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 45px rgba(124,77,255,.5);
 }
 
-.roadmap-card ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
+.active{
+    border:2px solid #58CC02;
+    box-shadow:0 0 35px rgba(88,204,2,.4);
 }
 
-.roadmap-card li {
-    margin: 16px 0;
-    font-size: 17px;
-    color: #666;
-    position: relative;
-    padding-left: 22px;
+.planet{
+    font-size:70px;
+    margin-bottom:20px;
 }
 
-.roadmap-card li::before {
-    content: "✔";
-    color: #58CC02;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
+.planet-card h3{
+    color:white;
+    font-size:36px;
+    margin-bottom:15px;
 }
 
-.roadmap-card button {
-    margin-top: 25px;
-    width: 100%;
-    padding: 15px;
-    background: #58CC02;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+.planet-card p{
+    color:#cfd5ea;
+    font-size:20px;
+    line-height:1.7;
+    margin-bottom:30px;
 }
 
-.roadmap-card button:hover {
-    background: #46a602;
-    transform: scale(1.03);
+.planet-card button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#7C4DFF,#4F8DFF);
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
 }
 
-@media (max-width: 768px) {
-
-.roadmap {
-    padding: 70px 20px;
-}
-
-.roadmap h2 {
-    font-size: 34px;
-}
-
-.roadmap-card {
-    width: 100%;
-    max-width: 360px;
-}
-
+.planet-card button:hover{
+    transform:scale(1.04);
 }

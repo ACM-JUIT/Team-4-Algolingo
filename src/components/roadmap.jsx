@@ -1,58 +1,53 @@
-import "./Roadmap.css";
+import "./roadmap.css";
 
 function Roadmap() {
   return (
     <section className="roadmap">
 
-      <h2>Choose Your Learning Path</h2>
+      <h2>🌌 Choose Your Galaxy</h2>
+
+      <p className="roadmap-subtitle">
+        Every programming language is its own galaxy full of planets,
+        coding missions and rewards.
+      </p>
 
       <div className="roadmap-container">
 
-        <div className="roadmap-card">
-          <h3>🟢 Beginner</h3>
+        <div className="planet-card active">
+          <div className="planet">🐍</div>
 
-          <ul>
-            <li>✔ Variables</li>
-            <li>✔ Data Types</li>
-            <li>✔ Operators</li>
-            <li>✔ Loops</li>
-            <li>✔ Arrays</li>
-          </ul>
+          <h3>Python Galaxy</h3>
 
-          <button>Start Learning</button>
+          <p>
+            Begin your journey with variables, loops, functions,
+            OOP and DSA.
+          </p>
 
+          <button>Enter Galaxy</button>
         </div>
 
-        <div className="roadmap-card">
+        <div className="planet-card">
+          <div className="planet">☕</div>
 
-          <h3>🟡 Intermediate</h3>
+          <h3>Java Galaxy</h3>
 
-          <ul>
-            <li>✔ Linked List</li>
-            <li>✔ Stack</li>
-            <li>✔ Queue</li>
-            <li>✔ Searching</li>
-            <li>✔ Sorting</li>
-          </ul>
+          <p>
+            Explore object-oriented programming and coding quests.
+          </p>
 
-          <button>Start Learning</button>
-
+          <button>Coming Soon</button>
         </div>
 
-        <div className="roadmap-card">
+        <div className="planet-card">
+          <div className="planet">⚙️</div>
 
-          <h3>🔴 Advanced</h3>
+          <h3>C++ Galaxy</h3>
 
-          <ul>
-            <li>✔ Trees</li>
-            <li>✔ Graphs</li>
-            <li>✔ Greedy</li>
-            <li>✔ Dynamic Programming</li>
-            <li>✔ Backtracking</li>
-          </ul>
+          <p>
+            Learn STL, competitive programming and advanced algorithms.
+          </p>
 
-          <button>Start Learning</button>
-
+          <button>Coming Soon</button>
         </div>
 
       </div>

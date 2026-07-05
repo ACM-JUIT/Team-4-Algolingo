@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
-import "./Hero.css";
+import "./hero.css";
 
 function Hero() {
   return (
     <section className="hero">
       <div className="hero-left">
-        <h1>Learn Algorithms the Fun Way!</h1>
+        <h1>Explore the <span>Algorithm Galaxy</span>
+        </h1>
 
-        <p>
-          Master Data Structures and Algorithms through interactive lessons,
-          quizzes, streaks, and rewards.
+  
+         <p>
+        Travel across galaxies, unlock planets, solve coding missions,
+        earn XP, and become a Master Explorer.
         </p>
 
         <div className="hero-buttons">

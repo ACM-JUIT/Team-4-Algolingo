@@ -1,104 +1,159 @@
-.login-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #58CC02, #46a602);
-    padding: 20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.login-card {
-    width: 420px;
-    background: #ffffff;
-    padding: 45px 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+.login-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:radial-gradient(circle at top,#1b1f4f 0%,#0b1026 55%,#050814 100%);
+    padding:40px;
 }
 
-.login-card h1 {
-    text-align: center;
-    color: #58CC02;
-    margin-bottom: 10px;
-    font-size: 36px;
+/* Animated Stars */
+.stars{
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#7C4DFF 1px, transparent 1px);
+    background-size:80px 80px,140px 140px;
+    background-position:0 0,40px 40px;
+    opacity:.35;
+    animation:starsMove 60s linear infinite;
 }
 
-.login-card p {
-    text-align: center;
-    color: #666;
-    margin-bottom: 30px;
-    line-height: 1.6;
+@keyframes starsMove{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-300px);
+    }
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 22px;
+.login-card{
+    position:relative;
+    z-index:2;
+    width:430px;
+    background:rgba(20,25,60,.95);
+    border:1px solid rgba(124,77,255,.4);
+    border-radius:25px;
+    padding:45px;
+    text-align:center;
+    backdrop-filter:blur(18px);
+    box-shadow:0 0 40px rgba(124,77,255,.35);
 }
 
-.form-group label {
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
+.robot{
+    font-size:75px;
+    margin-bottom:15px;
+    animation:float 3s ease-in-out infinite;
 }
 
-.form-group input {
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+@keyframes float{
+
+0%{
+    transform:translateY(0);
 }
 
-.form-group input:focus {
-    outline: none;
-    border-color: #58CC02;
-    box-shadow: 0 0 8px rgba(88,204,2,0.25);
+50%{
+    transform:translateY(-10px);
 }
 
-.login-btn {
-    width: 100%;
-    padding: 15px;
-    background: #58CC02;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+100%{
+    transform:translateY(0);
 }
 
-.login-btn:hover {
-    background: #46a602;
-    transform: translateY(-2px);
 }
 
-.signup-link {
-    text-align: center;
-    margin-top: 25px;
-    color: #666;
+.login-card h1{
+    color:white;
+    font-size:34px;
+    margin-bottom:12px;
 }
 
-.signup-link a {
-    color: #58CC02;
-    text-decoration: none;
-    font-weight: 600;
+.login-card p{
+    color:#bcc2da;
+    margin-bottom:28px;
+    line-height:1.6;
 }
 
-.signup-link a:hover {
-    text-decoration: underline;
+.login-card input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#0d1333;
+    color:white;
+    font-size:16px;
+    border:1px solid rgba(124,77,255,.3);
 }
 
-@media (max-width: 768px) {
-
-.login-card {
-    width: 100%;
-    max-width: 380px;
-    padding: 35px 25px;
+.login-card input::placeholder{
+    color:#9fa7c7;
 }
 
-.login-card h1 {
-    font-size: 30px;
+.login-card input:focus{
+    border:1px solid #7C4DFF;
+    box-shadow:0 0 15px rgba(124,77,255,.5);
+}
+
+.login-button{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#7C4DFF,#4F8DFF);
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(124,77,255,.6);
+}
+
+.signup-text{
+    margin-top:25px;
+    color:#bcc2da;
+}
+
+.signup-text a{
+    color:#7C4DFF;
+    text-decoration:none;
+    margin-left:8px;
+    font-weight:bold;
+}
+
+.signup-text a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:500px){
+
+.login-card{
+    width:100%;
+    padding:35px 25px;
+}
+
+.login-card h1{
+    font-size:28px;
+}
+
+.robot{
+    font-size:60px;
 }
 
 }

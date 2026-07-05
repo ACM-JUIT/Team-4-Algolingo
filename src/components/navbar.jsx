@@ -4,7 +4,17 @@ import "./navbar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      <h2 className="logo">Algolingo</h2>
+
+      <h2 className="logo">
+        🚀 AlgoLingo
+      </h2>
+
+      <div className="nav-links">
+        <a href="#">Galaxies</a>
+        <a href="#">Leaderboard</a>
+        <a href="#">Museum</a>
+        <a href="#">Daily Mission</a>
+      </div>
 
       <div className="nav-buttons">
         <Link to="/login">
@@ -15,6 +25,7 @@ function Navbar() {
           <button className="signup-btn">Sign Up</button>
         </Link>
       </div>
+
     </nav>
   );
 }

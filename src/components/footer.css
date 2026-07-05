@@ -1,98 +1,59 @@
-.footer {
-    background: #1f2937;
-    color: white;
-    padding: 80px 8% 30px;
+.footer{
+    background:#050814;
+    color:white;
+    padding:80px 8% 30px;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 220px;
+.footer-column h2{
+    color:#7C4DFF;
+    margin-bottom:20px;
+    text-shadow:0 0 15px #7C4DFF;
 }
 
-.footer-section h2,
-.footer-section h3 {
-    color: #58CC02;
-    margin-bottom: 20px;
-    font-size: 24px;
+.footer-column h3{
+    color:white;
+    margin-bottom:18px;
 }
 
-.footer-section p {
-    line-height: 1.8;
-    color: #d1d5db;
-    font-size: 16px;
+.footer-column p,
+.footer-column li{
+    color:#bcc2da;
+    margin-bottom:12px;
+    line-height:1.7;
 }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
+.footer-column ul{
+    list-style:none;
+    padding:0;
 }
 
-.footer-section li {
-    margin-bottom: 14px;
-    color: #d1d5db;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.footer-column li{
+    cursor:pointer;
+    transition:.3s;
 }
 
-.footer-section li:hover {
-    color: #58CC02;
-    padding-left: 6px;
+.footer-column li:hover{
+    color:#7C4DFF;
+    transform:translateX(6px);
 }
 
-.social-icons {
-    display: flex;
-    gap: 18px;
-    font-size: 28px;
-    margin-top: 20px;
+.socials{
+    font-size:28px;
+    margin-top:15px;
 }
 
-.social-icons svg {
-    cursor: pointer;
-    transition: all 0.3s ease;
+.footer hr{
+    margin:45px 0 20px;
+    border:.5px solid rgba(255,255,255,.15);
 }
 
-.social-icons svg:hover {
-    color: #58CC02;
-    transform: translateY(-4px) scale(1.15);
-}
-
-.footer hr {
-    margin: 45px 0 25px;
-    border: none;
-    border-top: 1px solid #374151;
-}
-
-.copyright {
-    text-align: center;
-    color: #9ca3af;
-    font-size: 15px;
-}
-
-@media (max-width: 768px) {
-
-.footer {
-    padding: 60px 20px 25px;
-}
-
-.footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-section {
-    width: 100%;
-}
-
-.social-icons {
-    justify-content: center;
-}
-
+.copyright{
+    text-align:center;
+    color:#8e95b8;
 }

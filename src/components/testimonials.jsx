@@ -1,41 +1,58 @@
-import "./Testimonials.css";
+import "./testimonials.css";
 
 function Testimonials() {
   return (
     <section className="testimonials">
-      <h2>What Our Learners Say</h2>
+
+      <h2>⭐ Explorer Reviews</h2>
+
+      <p className="testimonial-subtitle">
+        Hear from fellow explorers who conquered the Algorithm Galaxy.
+      </p>
 
       <div className="testimonial-container">
 
-        <div className="testimonial-card">
-          <div className="profile">👩‍🎓</div>
-          <h3>Priya Sharma</h3>
-          <p className="stars">⭐⭐⭐⭐⭐</p>
+        <div className="review-card">
+          <div className="avatar">👨‍🚀</div>
+
+          <h3>Alex</h3>
+
           <p>
-            Algolingo made learning DSA easy and enjoyable. The quizzes helped
-            me prepare for coding interviews.
+            "Learning DSA feels like exploring planets instead of reading
+            boring notes. The missions are addictive!"
           </p>
+
+          <span>⭐⭐⭐⭐⭐</span>
         </div>
 
-        <div className="testimonial-card">
-          <div className="profile">👨‍💻</div>
-          <h3>Rahul Verma</h3>
-          <p className="stars">⭐⭐⭐⭐⭐</p>
+        <div className="review-card">
+          <div className="avatar">👩‍🚀</div>
+
+          <h3>Sophia</h3>
+
           <p>
-            I loved the roadmap and XP system. It kept me motivated every day.
+            "The XP system keeps me motivated every day. I actually enjoy
+            solving algorithms now."
           </p>
+
+          <span>⭐⭐⭐⭐⭐</span>
         </div>
 
-        <div className="testimonial-card">
-          <div className="profile">👩‍💼</div>
-          <h3>Ananya Gupta</h3>
-          <p className="stars">⭐⭐⭐⭐⭐</p>
+        <div className="review-card">
+          <div className="avatar">🤖</div>
+
+          <h3>Nova Bot</h3>
+
           <p>
-            The interactive lessons are much better than reading long notes.
+            "Mission Complete! Thousands of learners have successfully
+            upgraded their coding skills."
           </p>
+
+          <span>⭐⭐⭐⭐⭐</span>
         </div>
 
       </div>
+
     </section>
   );
 }

@@ -1,52 +1,79 @@
-import "./Learning.css";
+import "./learning.css";
+import { useNavigate } from "react-router-dom";
 
 function Learning() {
 
-  const lessons = [
-    { title: "Arrays", xp: 50, status: "completed" },
-    { title: "Binary Search", xp: 60, status: "current" },
-    { title: "Linked List", xp: 70, status: "available" },
-    { title: "Stack", xp: 80, status: "locked" },
-    { title: "Queue", xp: 80, status: "locked" },
-    { title: "Tree", xp: 100, status: "locked" },
-    { title: "Graph", xp: 120, status: "locked" },
-    { title: "Dynamic Programming", xp: 150, status: "locked" }
-  ];
+  const navigate = useNavigate();
 
   return (
     <div className="learning-page">
 
-      <h1>📚 Algolingo Learning Path</h1>
+      <h1>🌌 Python Galaxy</h1>
 
       <p className="subtitle">
-        Complete lessons to unlock the next topic.
+        Travel through planets and unlock new coding powers.
       </p>
 
-      <div className="roadmap">
+      <div className="planet-container">
 
-        {lessons.map((lesson, index) => (
+        {/* Variables */}
+        <div
+          className="planet completed"
+          onClick={() => alert("Variables Planet Completed!")}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="planet-icon">🌍</div>
+          <h3>Variables</h3>
+          <p>Completed</p>
+        </div>
 
-          <div className="lesson-container" key={index}>
+        {/* Loops */}
+        <div
+          className="planet completed"
+          onClick={() => alert("Loops Planet Completed!")}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="planet-icon">🪐</div>
+          <h3>Loops</h3>
+          <p>Completed</p>
+        </div>
 
-            <div className={`lesson-circle ${lesson.status}`}>
+        {/* Functions */}
+        <div className="planet current">
+          <div className="planet-icon">🌕</div>
 
-              {lesson.status === "completed" && "✅"}
+          <h3>Functions</h3>
 
-              {lesson.status === "current" && "▶"}
+          <button onClick={() => navigate("/quiz")}>
+            Start Mission 🚀
+          </button>
+        </div>
 
-              {lesson.status === "available" && "📘"}
+        {/* Locked */}
+        <div
+          className="planet locked"
+          onClick={() => alert("Complete Functions first!")}
+          style={{ cursor: "not-allowed" }}
+        >
+          <div className="planet-icon">🌑</div>
 
-              {lesson.status === "locked" && "🔒"}
+          <h3>Recursion</h3>
 
-            </div>
+          <p>Locked 🔒</p>
+        </div>
 
-            <h3>{lesson.title}</h3>
+        {/* Locked */}
+        <div
+          className="planet locked"
+          onClick={() => alert("Complete previous planets first!")}
+          style={{ cursor: "not-allowed" }}
+        >
+          <div className="planet-icon">☄️</div>
 
-            <p>⭐ {lesson.xp} XP</p>
+          <h3>Dynamic Programming</h3>
 
-          </div>
-
-        ))}
+          <p>Locked 🔒</p>
+        </div>
 
       </div>
 

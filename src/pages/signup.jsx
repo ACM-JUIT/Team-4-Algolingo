@@ -1,6 +1,6 @@
-import { useState } from "react";
+import "./signup.css";
 import { Link, useNavigate } from "react-router-dom";
-import "./Signup.css";
+import { useState } from "react";
 
 function Signup() {
   const navigate = useNavigate();
@@ -10,59 +10,60 @@ function Signup() {
   const [password, setPassword] = useState("");
 
   const handleSignup = () => {
-    if (name === "" || email === "" || password === "") {
-      alert("Please fill all the fields.");
+    if (!name || !email || !password) {
+      alert("Please fill all fields!");
       return;
     }
 
-    alert("Account Created Successfully!");
-    navigate("/login");
+    alert("Account Created Successfully! 🚀");
+    navigate("/dashboard");
   };
 
   return (
     <div className="signup-page">
+      <div className="stars"></div>
+
       <div className="signup-card">
-        <h1>Create Account</h1>
-        <p>Join Algolingo and start learning!</p>
+        <div className="robot">🚀</div>
 
-        <div className="form-group">
-          <label>Full Name</label>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
+        <h1>Join AlgoLingo</h1>
 
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <p>
+          Begin your journey through the Algorithm Galaxy.
+        </p>
 
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
-        <button className="signup-btn" onClick={handleSignup}>
-          Create Account
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button
+          className="signup-button"
+          onClick={handleSignup}
+        >
+          Create Explorer 🚀
         </button>
 
-        <div className="login-link">
+        <p className="login-text">
           Already have an account?{" "}
           <Link to="/login">Login</Link>
-        </div>
+        </p>
       </div>
     </div>
   );

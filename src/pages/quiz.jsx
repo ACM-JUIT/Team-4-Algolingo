@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Quiz.css";
 
 function Quiz() {
-
   const navigate = useNavigate();
 
   const questions = [
@@ -23,12 +22,12 @@ function Quiz() {
       answer: "Stack",
     },
     {
-      question: "Which traversal visits Root first?",
+      question: "Which traversal visits the Root first?",
       options: ["Inorder", "Preorder", "Postorder", "Level Order"],
       answer: "Preorder",
     },
     {
-      question: "Which algorithm is used to find the shortest path?",
+      question: "Which algorithm finds the shortest path?",
       options: [
         "Bubble Sort",
         "Binary Search",
@@ -44,26 +43,25 @@ function Quiz() {
   const [score, setScore] = useState(0);
 
   const handleNext = () => {
-
     if (selected === "") {
       alert("Please select an answer.");
       return;
     }
 
+    let newScore = score;
+
     if (selected === questions[currentQuestion].answer) {
-      setScore(score + 1);
+      newScore = score + 1;
+      setScore(newScore);
     }
 
-    if (currentQuestion + 1 < questions.length) {
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelected("");
     } else {
       navigate("/result", {
         state: {
-          score:
-            selected === questions[currentQuestion].answer
-              ? score + 1
-              : score,
+          score: newScore,
           total: questions.length,
         },
       });
@@ -72,10 +70,26 @@ function Quiz() {
 
   return (
     <div className="quiz-page">
-
       <div className="quiz-card">
 
-        <h1>📝 Quiz Time</h1>
+        <div className="mission-badge">
+          🚀 Mission {currentQuestion + 1}
+        </div>
+
+        <h1>Algorithm Galaxy Quiz</h1>
+
+        <p className="mission">
+          Planet: DSA Explorer 🪐
+        </p>
+
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{
+              width: `${((currentQuestion + 1) / questions.length) * 100}%`,
+            }}
+          ></div>
+        </div>
 
         <h2>
           Question {currentQuestion + 1} of {questions.length}
@@ -98,11 +112,12 @@ function Quiz() {
         ))}
 
         <button className="next-btn" onClick={handleNext}>
-          Next Question →
+          {currentQuestion === questions.length - 1
+            ? "Finish Mission 🚀"
+            : "Next Mission →"}
         </button>
 
       </div>
-
     </div>
   );
 }
