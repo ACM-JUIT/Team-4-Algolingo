@@ -191,13 +191,15 @@ class PracticeService:
     async def has_viewed_solution(session: AsyncSession, *, user_id: UUID, practice_id: UUID) -> bool:
         """Returns whether a learner has already viewed a practice solution."""
         result = await session.execute(
-            select(UserEvent.id).where(
+            select(UserEvent.id)
+            .where(
                 UserEvent.user_id == user_id,
                 UserEvent.event_type == EventType.PRACTICE_SOLUTION_VIEWED,
                 UserEvent.event_data["practice_id"].astext == str(practice_id),
             )
+            .limit(1)
         )
-        return result.scalar_one_or_none() is not None
+        return result.scalar() is not None
 
     @classmethod
     async def submit_practice(

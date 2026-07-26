@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import time
+from collections.abc import Mapping, Sequence
 from contextlib import asynccontextmanager
 from uuid import uuid4
 
@@ -144,6 +145,17 @@ async def handle_app_exception(request: Request, exc: AppException) -> JSONRespo
     )
 
 
+def _sanitize_for_json(value: object) -> object:
+    """Converts validation error payload values into JSON-safe primitives."""
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    if isinstance(value, Mapping):
+        return {str(key): _sanitize_for_json(item) for key, item in value.items()}
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return [_sanitize_for_json(item) for item in value]
+    return str(value)
+
+
 @app.exception_handler(RequestValidationError)
 async def handle_validation_exception(request: Request, exc: RequestValidationError) -> JSONResponse:
     logger.warning(
@@ -157,7 +169,7 @@ async def handle_validation_exception(request: Request, exc: RequestValidationEr
         content={
             "success": False,
             "message": "Validation failed",
-            "errors": exc.errors(),
+            "errors": _sanitize_for_json(exc.errors()),
         },
     )
 

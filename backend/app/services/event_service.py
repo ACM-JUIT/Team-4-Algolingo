@@ -49,8 +49,8 @@ class EventService:
             except Exception:
                 await session.rollback()
                 raise
-            await session.refresh(event)
 
+        await session.refresh(event)
         return UserEventRead.model_validate(event)
 
     @staticmethod

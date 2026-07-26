@@ -100,16 +100,7 @@ class QuizService:
         return [QuizQuestionOption(id=str(item.get("id", "")), text=str(item.get("text", ""))) for item in option_dicts]
 
     @classmethod
-    async def get_quiz_questions(cls, session: AsyncSession, planet_id: UUID) -> list[QuizQuestionRead]:
-        result = await session.execute(
-            select(QuizQuestion)
-            .where(QuizQuestion.planet_id == planet_id)
-            .order_by(QuizQuestion.order_number.asc())
-        )
-        questions = result.scalars().all()
-        if not questions:
-            raise AppException(message="Quiz questions not found for planet", status_code=404)
-
+    def serialize_questions(cls, questions: list[QuizQuestion]) -> list[QuizQuestionRead]:
         return [
             QuizQuestionRead(
                 id=question.id,
@@ -124,6 +115,64 @@ class QuizService:
             )
             for question in cls._sort_questions(questions)
         ]
+
+    @classmethod
+    async def get_quiz_questions(cls, session: AsyncSession, planet_id: UUID) -> list[QuizQuestionRead]:
+        result = await session.execute(
+            select(QuizQuestion)
+            .where(QuizQuestion.planet_id == planet_id)
+            .order_by(QuizQuestion.order_number.asc())
+        )
+        questions = result.scalars().all()
+        if not questions:
+            raise AppException(message="Quiz questions not found for planet", status_code=404)
+
+        return cls.serialize_questions(questions)
+
+    @classmethod
+    async def get_quiz_questions_for_user(
+        cls,
+        session: AsyncSession,
+        *,
+        planet_id: UUID,
+        user_id: UUID,
+    ) -> list[QuizQuestionRead]:
+        planet = await cls.load_planet_with_quiz(session=session, planet_id=planet_id)
+
+        from app.services.progress_service import ProgressService
+
+        planet_status = await ProgressService.ensure_planet_is_unlocked(
+            session=session,
+            user_id=user_id,
+            planet=planet,
+        )
+        progress_result = await session.execute(
+            select(UserProgress).where(
+                UserProgress.user_id == user_id,
+                UserProgress.planet_id == planet.id,
+            )
+        )
+        progress = progress_result.scalar_one_or_none()
+        attempts_count_result = await session.execute(
+            select(func.count(QuizAttempt.id)).where(
+                QuizAttempt.user_id == user_id,
+                QuizAttempt.planet_id == planet.id,
+            )
+        )
+        attempts_count = int(attempts_count_result.scalar_one() or 0)
+        quiz_status = ProgressService.determine_quiz_status(
+            planet=planet,
+            progress=progress,
+            attempts_count=attempts_count,
+            planet_status=planet_status,
+        )
+        if quiz_status == QuizStatusEnum.LOCKED:
+            raise AppException(message="Quiz is locked until all discoveries and practices are completed", status_code=403)
+
+        questions = list(planet.quiz_questions)
+        if not questions:
+            raise AppException(message="Quiz questions not found for planet", status_code=404)
+        return cls.serialize_questions(questions)
 
     @classmethod
     async def get_quiz_overview(

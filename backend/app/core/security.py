@@ -78,8 +78,9 @@ def create_refresh_token(*, subject: str, username: str, role: str) -> tuple[str
 
 
 def decode_token(token: str) -> dict[str, Any]:
+    normalized_token = token.strip().strip('"').strip("'")
     try:
-        return jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
+        return jwt.decode(normalized_token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
     except JWTError as exc:
         raise AppException(message="Invalid or expired token", status_code=401) from exc
 

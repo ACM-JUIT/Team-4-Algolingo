@@ -240,6 +240,7 @@ class AuthService:
         )
         session.add(refresh_token_record)
         await session.flush()
+        await session.refresh(user)
 
         return AuthSessionData(
             user=UserRead.model_validate(user),

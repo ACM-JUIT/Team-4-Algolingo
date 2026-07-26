@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+import os
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -25,6 +26,12 @@ FORBIDDEN_MODULES = {
     "marshal",
 }
 FORBIDDEN_CALLS = {"eval", "exec", "compile", "open", "__import__", "globals", "locals", "vars", "breakpoint"}
+MAX_MEMORY_BYTES = 64 * 1024 * 1024
+MAX_OUTPUT_FILE_BYTES = 1024 * 1024
+CLEAN_EXECUTION_ENV = {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUNBUFFERED": "1",
+}
 
 
 @dataclass(slots=True)
@@ -59,6 +66,22 @@ class CodeExecutionService:
                 if isinstance(node.func, ast.Attribute) and node.func.attr in FORBIDDEN_CALLS:
                     raise AppException(message=f"Call to '{node.func.attr}' is not allowed", status_code=400)
 
+    @staticmethod
+    def _build_preexec_fn():
+        if os.name != "posix":
+            return None
+
+        def _limit_resources() -> None:
+            import resource
+
+            resource.setrlimit(resource.RLIMIT_CPU, (6, 6))
+            resource.setrlimit(resource.RLIMIT_AS, (MAX_MEMORY_BYTES, MAX_MEMORY_BYTES))
+            resource.setrlimit(resource.RLIMIT_FSIZE, (MAX_OUTPUT_FILE_BYTES, MAX_OUTPUT_FILE_BYTES))
+            resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+            resource.setrlimit(resource.RLIMIT_NPROC, (1, 1))
+
+        return _limit_resources
+
     @classmethod
     def execute_python_code(
         cls,
@@ -77,6 +100,9 @@ class CodeExecutionService:
                 capture_output=True,
                 timeout=timeout_seconds,
                 check=False,
+                env=CLEAN_EXECUTION_ENV,
+                close_fds=True,
+                preexec_fn=cls._build_preexec_fn(),
             )
             return ExecutionResult(
                 stdout=completed.stdout,

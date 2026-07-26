@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, NotRequired, TypedDict
+from typing import Any, TypedDict
 
 from app.models.enums import QuestionType
 
@@ -8,9 +8,7 @@ from app.models.enums import QuestionType
 class QuizQuestionSeedData(TypedDict):
     key: str
     planet_key: str
-    question: NotRequired[str]
     question_text: str
-    type: NotRequired[QuestionType]
     question_type: QuestionType
     options: list[dict[str, Any]] | None
     correct_answer: str

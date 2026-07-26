@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import NotRequired, TypedDict
+from typing import TypedDict
 
 from app.models.enums import ArtifactCategory, ArtifactRarity
 
@@ -14,7 +14,6 @@ class ArtifactSeedData(TypedDict):
     category: ArtifactCategory
     unlock_condition: str | None
     xp_bonus_percent: int
-    icon_name: NotRequired[str | None]
     icon_url: str | None
     display_order: int
     is_hidden: bool

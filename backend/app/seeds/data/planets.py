@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import NotRequired, TypedDict
+from typing import TypedDict
 
 from app.models.enums import PlanetStatus
 
@@ -9,7 +9,6 @@ class PlanetSeedData(TypedDict):
     key: str
     galaxy_key: str
     artifact_key: str | None
-    artifact_reward: NotRequired[str | None]
     name: str
     tagline: str | None
     description: str | None

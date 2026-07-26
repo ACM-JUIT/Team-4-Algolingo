@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import NotRequired, TypedDict
+from typing import TypedDict
 
 from app.models.enums import DiscoveryStatus
 
@@ -9,12 +9,9 @@ class DiscoverySeedData(TypedDict):
     key: str
     planet_key: str
     title: str
-    short_description: NotRequired[str | None]
     description: str | None
-    markdown_content: NotRequired[str | None]
     content_md: str | None
     learning_objective: str | None
-    estimated_read_time: NotRequired[int | None]
     read_time_minutes: int | None
     difficulty: int
     xp_reward: int

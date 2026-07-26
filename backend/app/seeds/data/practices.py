@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, NotRequired, TypedDict
+from typing import Any, TypedDict
 
 from app.models.enums import ChallengeType, PracticeStatus
 
@@ -13,12 +13,8 @@ class PracticeSeedData(TypedDict):
     difficulty: int
     description: str | None
     learning_outcome: str | None
-    starter_code: NotRequired[str | None]
-    expected_solution: NotRequired[str | None]
     xp_reward: int
     solution_code: str | None
-    sample_input: NotRequired[str | None]
-    sample_output: NotRequired[str | None]
     hints: list[str]
     test_cases: list[dict[str, Any]]
     order_number: int
