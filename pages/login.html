@@ -24,7 +24,6 @@
     })();
   </script>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/themes.css">
   <link rel="stylesheet" href="../assets/css/base.css">
@@ -69,11 +68,9 @@
 
           </div>
 
-
           <h1 class="auth-title">
             Learn Python with a clear path, thoughtful pacing, and real progression.
           </h1>
-
 
           <p class="auth-subtitle">
             Sign in to continue your discoveries, coding practice, quizzes,
@@ -81,7 +78,6 @@
           </p>
 
         </div>
-
 
         <ul class="brand-list">
 
@@ -98,7 +94,6 @@
             </div>
           </li>
 
-
           <li>
             <span class="brand-list-bullet">2</span>
 
@@ -111,7 +106,6 @@
               </div>
             </div>
           </li>
-
 
           <li>
             <span class="brand-list-bullet">3</span>
@@ -245,9 +239,6 @@
               Password
             </label>
 
-
-            <!-- PASSWORD INPUT + SHOW BUTTON -->
-
             <div
               style="
                 position: relative;
@@ -266,10 +257,12 @@
                 style="padding-right: 75px;"
               >
 
+              <!-- PASSWORD VISIBILITY BUTTON -->
 
               <button
                 type="button"
                 id="toggle-password"
+                aria-label="Show password"
                 style="
                   position: absolute;
                   right: 10px;
@@ -287,7 +280,6 @@
               </button>
 
             </div>
-
 
             <div
               class="field-error"
@@ -316,6 +308,8 @@
           Account access
         </div>
 
+
+        <!-- FORGOT PASSWORD MESSAGE -->
 
         <div class="callout">
           Forgot password is not shown because the current backend
@@ -364,30 +358,6 @@
     type="module"
     src="../assets/js/login.js"
   ></script>
-
-
-  <!-- SHOW / HIDE PASSWORD JAVASCRIPT -->
-
-  <script>
-    const passwordInput = document.getElementById("password");
-    const togglePassword = document.getElementById("toggle-password");
-
-    togglePassword.addEventListener("click", function () {
-
-      if (passwordInput.type === "password") {
-
-        passwordInput.type = "text";
-        togglePassword.textContent = "Hide";
-
-      } else {
-
-        passwordInput.type = "password";
-        togglePassword.textContent = "Show";
-
-      }
-
-    });
-  </script>
 
 </body>
 </html>
