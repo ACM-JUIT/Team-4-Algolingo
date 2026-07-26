@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('algolingo:theme');
+
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+
+        document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+
+  <title>Login · AlgoLingo</title>
+</head>
+
+<body>
+
+  <main class="auth-shell">
+
+    <!-- LEFT SIDE -->
+    <section class="auth-panel brand-panel">
+
+      <div class="brand-stack">
+
+        <div>
+
+          <div class="auth-logo-row">
+
+            <img
+              src="../assets/img/logo.svg"
+              alt="AlgoLingo logo"
+              width="64"
+              height="64"
+            >
+
+            <div>
+              <strong
+                style="font-size: 1.25rem; color: var(--text-strong);"
+              >
+                AlgoLingo
+              </strong>
+
+              <div class="activity-note">
+                Gamified Python learning
+              </div>
+            </div>
+
+          </div>
+
+          <h1 class="auth-title">
+            Learn Python with a clear path, thoughtful pacing, and real progression.
+          </h1>
+
+          <p class="auth-subtitle">
+            Sign in to continue your discoveries, coding practice, quizzes,
+            artifacts, and leaderboard progress using the existing FastAPI backend.
+          </p>
+
+        </div>
+
+        <ul class="brand-list">
+
+          <li>
+            <span class="brand-list-bullet">1</span>
+
+            <div>
+              <strong>Structured planets</strong>
+
+              <div class="activity-note">
+                Move through Variables, Data Types, Operators,
+                Conditionals, Loops, and Functions in order.
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <span class="brand-list-bullet">2</span>
+
+            <div>
+              <strong>Backend-enforced progression</strong>
+
+              <div class="activity-note">
+                Every unlock, quiz result, and artifact is driven
+                by the live API rules.
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <span class="brand-list-bullet">3</span>
+
+            <div>
+              <strong>NOVA support</strong>
+
+              <div class="activity-note">
+                Ask questions, request hints, debug code,
+                and get recommendations without leaving the platform.
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE -->
+    <section class="auth-panel">
+
+      <div class="auth-card-wrap form-card stack">
+
+        <!-- HEADER -->
+
+        <div
+          class="inline"
+          style="
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+
+          <div
+            class="auth-logo-row"
+            style="margin: 0;"
+          >
+
+            <img
+              src="../assets/img/logo.svg"
+              alt="AlgoLingo logo"
+              width="48"
+              height="48"
+            >
+
+            <div>
+
+              <strong style="color: var(--text-strong);">
+                Welcome back
+              </strong>
+
+              <div class="activity-note">
+                Sign in to continue learning.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- THEME BUTTON -->
+
+          <button
+            type="button"
+            class="button button-secondary"
+            data-theme-toggle
+          >
+            <span data-theme-toggle-label>
+              Theme
+            </span>
+          </button>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <form
+          id="login-form"
+          class="form-grid"
+          novalidate
+        >
+
+          <!-- ERROR MESSAGE -->
+
+          <div
+            id="auth-alert"
+            class="form-alert"
+          ></div>
+
+
+          <!-- EMAIL -->
+
+          <div class="form-row">
+
+            <label
+              class="form-label"
+              for="email"
+            >
+              Email
+            </label>
+
+            <input
+              class="input"
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+
+            <div
+              class="field-error"
+              data-field-error="email"
+            ></div>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="form-row">
+
+            <label
+              class="form-label"
+              for="password"
+            >
+              Password
+            </label>
+
+            <div
+              style="
+                position: relative;
+                display: flex;
+                align-items: center;
+              "
+            >
+
+              <input
+                class="input"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                style="padding-right: 75px;"
+              >
+
+              <!-- PASSWORD VISIBILITY BUTTON -->
+
+              <button
+                type="button"
+                id="toggle-password"
+                aria-label="Show password"
+                style="
+                  position: absolute;
+                  right: 10px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  border: none;
+                  background: transparent;
+                  color: var(--primary);
+                  font-weight: 600;
+                  cursor: pointer;
+                  padding: 5px 8px;
+                "
+              >
+                Show
+              </button>
+
+            </div>
+
+            <div
+              class="field-error"
+              data-field-error="password"
+            ></div>
+
+          </div>
+
+
+          <!-- SIGN IN BUTTON -->
+
+          <button
+            type="submit"
+            class="button button-primary button-block"
+            id="login-button"
+          >
+            Sign in
+          </button>
+
+        </form>
+
+
+        <!-- ACCOUNT ACCESS -->
+
+        <div class="auth-divider">
+          Account access
+        </div>
+
+
+        <!-- FORGOT PASSWORD MESSAGE -->
+
+        <div class="callout">
+          Forgot password is not shown because the current backend
+          does not expose a reset-password route.
+        </div>
+
+
+        <!-- REGISTER -->
+
+        <p class="auth-footer">
+
+          New to AlgoLingo?
+
+          <a
+            href="./register.html"
+            style="
+              color: var(--primary);
+              font-weight: 600;
+            "
+          >
+            Create an account
+          </a>
+
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- TOAST -->
+
+  <div
+    id="toast-root"
+    class="toast-region"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
+
+
+  <!-- LOGIN JAVASCRIPT -->
+
+  <script
+    type="module"
+    src="../assets/js/login.js"
+  ></script>
+
+</body>
+</html>
