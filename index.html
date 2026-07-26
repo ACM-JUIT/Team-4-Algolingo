@@ -1,13 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>algolingo</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoLingo</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('algolingo:theme');
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/css/variables.css">
+  <link rel="stylesheet" href="./assets/css/themes.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/pages.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-panel brand-panel">
+      <div class="brand-stack">
+        <div class="auth-logo-row">
+          <img src="./assets/img/logo.svg" alt="AlgoLingo logo" width="72" height="72">
+          <div>
+            <strong style="font-size: 1.4rem; color: var(--text-strong);">AlgoLingo</strong>
+            <div class="activity-note">Loading your workspace…</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="auth-panel">
+      <div class="form-card stack">
+        <div class="skeleton-line" style="width: 14rem;"></div>
+        <div class="skeleton-line" style="width: 20rem;"></div>
+        <div class="skeleton-block" style="min-height: 12rem;"></div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./assets/js/index.js"></script>
+</body>
 </html>
