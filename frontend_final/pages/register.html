@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register · AlgoLingo</title>
+  <link rel="stylesheet" href="../assets/css/00-tokens.css">
+  <link rel="stylesheet" href="../assets/css/01-reset.css">
+  <link rel="stylesheet" href="../assets/css/02-base.css">
+  <link rel="stylesheet" href="../assets/css/03-layout.css">
+  <link rel="stylesheet" href="../assets/css/04-components.css">
+  <link rel="stylesheet" href="../assets/css/05-pages.css">
+  <link rel="stylesheet" href="../assets/css/06-animations.css">
+</head>
+<body data-world="auth">
+  <main class="page-width" style="position:relative;z-index:1;padding:2rem 1.5rem 4rem;">
+    <section class="auth-stage-grid">
+      <section class="card auth-stage-panel">
+        <div class="auth-stage-content">
+          <span class="auth-brand-pill">Begin the first expedition</span>
+          <div class="brand-wordmark brand-wordmark--md">AlgoLingo</div>
+          <h1 class="auth-stage-title">Create your explorer identity and launch the first route.</h1>
+          <p class="auth-stage-copy">Registration follows the live account rules exactly. Once your explorer identity is verified, mission control opens immediately.</p>
+          <div class="auth-stage-metrics">
+            <div class="auth-stage-metric"><div class="auth-stage-metric-value">Galaxies</div><div class="auth-stage-metric-label">Programming worlds</div></div>
+            <div class="auth-stage-metric"><div class="auth-stage-metric-value">Missions</div><div class="auth-stage-metric-label">Hands-on coding</div></div>
+            <div class="auth-stage-metric"><div class="auth-stage-metric-value">Artifacts</div><div class="auth-stage-metric-label">Earned relics</div></div>
+          </div>
+        </div>
+      </section>
+      <section class="form-card auth-shell-card">
+        <div class="stack">
+          <div class="auth-card-top">
+            <div class="auth-card-heading">
+              <p class="eyebrow">Create account</p>
+              <h1 class="auth-card-title">Set up your explorer profile</h1>
+              <p class="auth-card-subtitle">Use details that satisfy the current account rules.</p>
+            </div>
+          </div>
+          <form id="register-form" class="form-grid" novalidate>
+            <div id="auth-alert" class="form-alert"></div>
+            <div class="form-row">
+              <label class="form-label" for="username">Username</label>
+              <input class="input" id="username" name="username" type="text" minlength="3" maxlength="50" autocomplete="username" required>
+              <div class="form-help">Use letters, numbers, or underscores only.</div>
+              <div class="field-error" data-field-error="username"></div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" required>
+              <div class="field-error" data-field-error="email"></div>
+            </div>
+            <div class="form-row-inline">
+              <div class="form-row">
+                <label class="form-label" for="password">Password</label>
+                <input class="input" id="password" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
+                <div class="form-help">Minimum 8 characters, at least one uppercase letter and one number.</div>
+                <div class="field-error" data-field-error="password"></div>
+              </div>
+              <div class="form-row">
+                <label class="form-label" for="confirm_password">Confirm password</label>
+                <input class="input" id="confirm_password" name="confirm_password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
+                <div class="field-error" data-field-error="confirm_password"></div>
+              </div>
+            </div>
+            <button class="button button-primary button-block" id="register-button">Create explorer identity</button>
+          </form>
+          <div class="auth-support-card"><div class="auth-helper-note">A successful registration starts your session immediately, so there is no extra sign-in step.</div></div>
+          <p class="auth-footer">Already registered? <a href="./login.html" class="auth-inline-link">Sign in instead</a></p>
+        </div>
+      </section>
+    </section>
+  </main>
+  <div id="toast-root" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="../assets/js/pages/register.js"></script>
+</body>
+</html>

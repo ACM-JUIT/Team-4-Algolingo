@@ -1,0 +1,87 @@
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
+@keyframes button-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatStar {
+  0% { transform: translate3d(0, 0, 0); opacity: 0.45; }
+  50% { transform: translate3d(0, -10px, 0); opacity: 0.95; }
+  100% { transform: translate3d(0, 0, 0); opacity: 0.45; }
+}
+
+@keyframes floatDust {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(14px, -12px, 0) scale(1.15); }
+}
+
+@keyframes slowNebula {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(12px, -8px, 0) scale(1.04); }
+}
+
+@keyframes driftBeam {
+  0%, 100% { transform: rotate(-10deg) translateX(0); opacity: 0.45; }
+  50% { transform: rotate(-10deg) translateX(26px); opacity: 0.75; }
+}
+
+@keyframes pageRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cosmos-nebula { animation: slowNebula 18s ease-in-out infinite; }
+.cosmos-aurora { animation: slowNebula 24s ease-in-out -4s infinite; }
+.cosmos-fog { animation: slowNebula 30s ease-in-out -10s infinite; }
+.cosmos-lightbeam { animation: driftBeam 18s ease-in-out infinite; }
+
+body {
+  animation: pageRise 280ms var(--transition-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes panelFloatIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px rgba(255,179,71,0.24); }
+  50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 54px rgba(154,123,255,0.18); }
+}
+
+@keyframes subtleOrbitDrift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -5px, 0); }
+}
+
+.shell-panel:not([hidden]) {
+  animation: panelFloatIn 180ms var(--transition-fast);
+}
+
+.planet-sphere,
+.lesson-orbit-core {
+  animation: gentlePulse 8s ease-in-out infinite;
+}
+
+.planet-satellite,
+.lesson-orbit-node,
+.galaxy-sector-satellite {
+  animation: subtleOrbitDrift 10s ease-in-out infinite;
+}
+
+.planet-satellite:nth-child(4),
+.lesson-orbit-node:nth-child(4),
+.galaxy-sector-satellite:nth-child(4) {
+  animation-delay: -2.5s;
+}

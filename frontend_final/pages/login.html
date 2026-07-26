@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login · AlgoLingo</title>
+  <link rel="stylesheet" href="../assets/css/00-tokens.css">
+  <link rel="stylesheet" href="../assets/css/01-reset.css">
+  <link rel="stylesheet" href="../assets/css/02-base.css">
+  <link rel="stylesheet" href="../assets/css/03-layout.css">
+  <link rel="stylesheet" href="../assets/css/04-components.css">
+  <link rel="stylesheet" href="../assets/css/05-pages.css">
+  <link rel="stylesheet" href="../assets/css/06-animations.css">
+</head>
+<body data-world="auth">
+  <main class="page-width" style="position:relative;z-index:1;padding:2rem 1.5rem 4rem;">
+    <section class="auth-stage-grid">
+      <section class="card auth-stage-panel">
+        <div class="auth-stage-content">
+          <span class="auth-brand-pill">Return to mission control</span>
+          <div class="brand-wordmark brand-wordmark--md">AlgoLingo</div>
+          <h1 class="auth-stage-title">Step back into your learning orbit.</h1>
+          <p class="auth-stage-copy">Resume the exact planet, mission, and reward path already tied to your explorer journey. No duplicate progress. No guesswork.</p>
+          <div class="auth-stage-bullets">
+            <div class="auth-stage-bullet"><span class="icon-spot">✦</span><div class="auth-stage-bullet-copy"><strong>Structured progression</strong><span>Discoveries, missions, boss battles, artifacts, and ranks stay connected through one clear flow.</span></div></div>
+            <div class="auth-stage-bullet"><span class="icon-spot">⌘</span><div class="auth-stage-bullet-copy"><strong>Persistent learning path</strong><span>Your unlocks, attempts, streaks, and rewards stay attached to your real AlgoLingo journey.</span></div></div>
+            <div class="auth-stage-bullet"><span class="icon-spot">◎</span><div class="auth-stage-bullet-copy"><strong>NOVA support</strong><span>Ask questions, debug your code, or request hints without leaving your current lesson path.</span></div></div>
+          </div>
+        </div>
+      </section>
+      <section class="form-card auth-shell-card">
+        <div class="stack">
+          <div class="auth-card-top">
+            <div class="auth-card-heading">
+              <p class="eyebrow">Sign in</p>
+              <h1 class="auth-card-title">Welcome back</h1>
+              <p class="auth-card-subtitle">Use your existing explorer account to continue from your latest milestone.</p>
+            </div>
+          </div>
+          <form id="login-form" class="form-grid" novalidate>
+            <div id="auth-alert" class="form-alert"></div>
+            <div class="form-row">
+              <label class="form-label" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" required>
+              <div class="field-error" data-field-error="email"></div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="password">Password</label>
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" required>
+              <div class="field-error" data-field-error="password"></div>
+            </div>
+            <div class="auth-support-links">
+              <a class="auth-inline-link" href="./forgot-password.html">Need help signing in?</a>
+              <span class="auth-helper-note">Secure sign-in protects the progress already attached to this explorer account.</span>
+            </div>
+            <button class="button button-primary button-block" id="login-button">Launch mission</button>
+          </form>
+          <div class="auth-support-card"><div class="auth-helper-note">New to AlgoLingo? Start with a new explorer identity and the platform will place you at the beginning of the journey.</div></div>
+          <p class="auth-footer">New to AlgoLingo? <a href="./register.html" class="auth-inline-link">Create your account</a></p>
+        </div>
+      </section>
+    </section>
+  </main>
+  <div id="toast-root" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="../assets/js/pages/login.js"></script>
+</body>
+</html>

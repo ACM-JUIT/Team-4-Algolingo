@@ -1,0 +1,166 @@
+body {
+  min-width: 320px;
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 205, 121, 0.2), transparent 24%),
+    radial-gradient(circle at 78% 14%, rgba(154, 123, 255, 0.14), transparent 22%),
+    radial-gradient(circle at 54% 80%, rgba(107, 215, 187, 0.12), transparent 20%),
+    linear-gradient(180deg, var(--bg-canvas-2), var(--bg-canvas));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body[data-world="galaxies"] {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 179, 71, 0.24), transparent 24%),
+    radial-gradient(circle at 82% 16%, rgba(154, 123, 255, 0.18), transparent 22%),
+    radial-gradient(circle at 52% 72%, rgba(79, 202, 200, 0.12), transparent 20%),
+    linear-gradient(180deg, #fffcf7, #f7f4ef);
+}
+
+body[data-world="planet"],
+body[data-world="discovery"],
+body[data-world="practice"],
+body[data-world="quiz"] {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 190, 92, 0.22), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(125, 87, 209, 0.14), transparent 18%),
+    radial-gradient(circle at 70% 80%, rgba(107, 215, 187, 0.12), transparent 18%),
+    linear-gradient(180deg, #fffdf9, #f8f4ee);
+}
+
+body[data-world="nova"] {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 142, 176, 0.18), transparent 18%),
+    radial-gradient(circle at 78% 18%, rgba(107, 215, 187, 0.16), transparent 18%),
+    radial-gradient(circle at 55% 85%, rgba(154, 123, 255, 0.14), transparent 20%),
+    linear-gradient(180deg, #fffdf8, #f6f2eb);
+}
+
+body[data-world="artifacts"],
+body[data-world="leaderboard"],
+body[data-world="profile"],
+body[data-world="settings"],
+body[data-world="achievements"],
+body[data-world="notifications"],
+body[data-world="search"] {
+  background:
+    radial-gradient(circle at 14% 16%, rgba(255, 193, 118, 0.2), transparent 22%),
+    radial-gradient(circle at 82% 14%, rgba(154, 123, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 64% 82%, rgba(107, 215, 187, 0.1), transparent 18%),
+    linear-gradient(180deg, #fffdf8, #f7f2ea);
+}
+
+body[data-world="landing"],
+body[data-world="auth"] {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 190, 92, 0.24), transparent 25%),
+    radial-gradient(circle at 82% 18%, rgba(154, 123, 255, 0.16), transparent 24%),
+    radial-gradient(circle at 50% 88%, rgba(79, 202, 200, 0.12), transparent 20%),
+    linear-gradient(180deg, #fffdf9, #f7f2ea);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: var(--leading-tight);
+}
+
+p {
+  color: var(--text-main);
+}
+
+code, pre {
+  font-family: var(--font-code);
+}
+
+::selection {
+  background: rgba(255, 179, 71, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(154, 123, 255, 0.7);
+  outline-offset: 2px;
+}
+
+main, section, article, aside, nav, header, footer {
+  min-width: 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.page-width {
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+}
+
+.brand-wordmark {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: var(--accent-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 24px rgba(255, 179, 71, 0.18);
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.brand-wordmark:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.brand-wordmark--sm { font-size: 1.25rem; }
+.brand-wordmark--md { font-size: 1.55rem; }
+.brand-wordmark--lg { font-size: clamp(2.2rem, 5vw, 4.75rem); }
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(154, 123, 255, 0.28) rgba(255, 255, 255, 0.52);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.56);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.82);
+  background: linear-gradient(180deg, rgba(255, 190, 92, 0.85), rgba(154, 123, 255, 0.82));
+}
