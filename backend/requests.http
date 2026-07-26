@@ -1,0 +1,9 @@
+
+
+POST http://localhost:8000/api/v1/nova/ask
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NDgxM2U2ZS1iYWFhLTRlNjgtOTEzMi1iODNlODYyNDYzYTAiLCJ1c2VybmFtZSI6InN0cmluZyIsInJvbGUiOiJVU0VSIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc4NTA1MjYxNCwiZXhwIjoxNzg1MTM5MDE0fQ.pSRAGSQt31KYFSYvxOWSTB1d7403y70Sb3PEkFIaHuU
+Content-Type: application/json
+
+{
+  "message": "Explain Python variables in simple words."
+}
